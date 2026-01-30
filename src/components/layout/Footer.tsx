@@ -38,11 +38,11 @@ export const Footer = () => {
                 <Zap className="w-6 h-6 text-background" />
               </div>
               <span className="font-display text-xl font-bold text-gradient">
-                TECHFEST'25
+                ABHIYANTRAN
               </span>
             </Link>
             <p className="text-muted-foreground text-sm">
-              The biggest tech festival of the year. Join us for an incredible experience of innovation, learning, and networking.
+              The annual tech fest of National Institute of Technology Sikkim. Join us for innovation, learning, and networking at NIT Sikkim.
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social) => (
@@ -98,15 +98,15 @@ export const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-sm text-muted-foreground">
                 <MapPin className="w-4 h-4 text-primary" />
-                <span>Tech Campus, Innovation City</span>
+                <span>NIT Sikkim, Ravangla, South Sikkim, India</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Mail className="w-4 h-4 text-primary" />
-                <span>hello@techfest25.com</span>
+                <span>abhiyantran@nitsikkim.ac.in</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Phone className="w-4 h-4 text-primary" />
-                <span>+1 (555) 123-4567</span>
+                <span>+91 (03595) 260 000</span>
               </li>
             </ul>
           </div>
@@ -114,7 +114,7 @@ export const Footer = () => {
 
         <div className="mt-12 pt-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2025 TechFest. All rights reserved.
+            © 2025 NIT Sikkim - ABHIYANTRAN. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-muted-foreground">
             <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>

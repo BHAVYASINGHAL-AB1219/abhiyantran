@@ -6,7 +6,7 @@ const announcements = [
   {
     id: 1,
     title: 'Registration Deadline Extended!',
-    content: 'Good news! The registration deadline for all events has been extended to March 10, 2025. Don\'t miss your chance to participate in the biggest tech fest of the year.',
+    content: 'Good news! The registration deadline for all events has been extended to March 10, 2025. Don\'t miss your chance to participate in ABHIYANTRAN, NIT Sikkim\'s annual tech fest.',
     date: 'January 25, 2025',
     type: 'important',
     pinned: true,
@@ -87,7 +87,7 @@ const Announcements = () => {
               <span className="text-gradient">Announcements</span>
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Latest updates, news, and important information about TechFest'25
+              Latest updates, news, and important information about ABHIYANTRAN
             </p>
           </motion.div>
 

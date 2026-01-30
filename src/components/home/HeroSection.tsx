@@ -20,29 +20,37 @@ export const HeroSection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-4xl mx-auto">
-          {/* Badge */}
+          {/* Badge - NIT Sikkim */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/30 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/30 mb-4"
           >
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <span className="text-sm font-body text-primary font-medium">National Institute of Technology Sikkim</span>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.05 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/30 mb-6"
+          >
             <span className="text-sm font-body text-primary">March 15-17, 2025</span>
           </motion.div>
 
-          {/* Main Title */}
+          {/* Main Title - ABHIYANTRAN */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-display text-4xl sm:text-5xl md:text-7xl font-bold mb-6 leading-tight"
           >
+            <span className="text-gradient">ABHIYANTRAN</span>
+            <br />
             <span className="text-foreground">THE FUTURE OF</span>
             <br />
-            <span className="text-gradient">TECHNOLOGY</span>
-            <br />
-            <span className="text-foreground">STARTS HERE</span>
+            <span className="text-foreground">TECHNOLOGY STARTS HERE</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -52,7 +60,7 @@ export const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto font-body"
           >
-            Join thousands of innovators, developers, and tech enthusiasts for the most electrifying tech festival of 2025.
+            Join thousands of innovators, developers, and tech enthusiasts at NIT Sikkim&apos;s annual tech fest — ABHIYANTRAN. Innovation, learning, and networking in the heart of Sikkim.
           </motion.p>
 
           {/* CTA Buttons */}

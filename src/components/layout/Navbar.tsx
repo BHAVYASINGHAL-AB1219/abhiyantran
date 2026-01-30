@@ -36,8 +36,9 @@ export const Navbar = () => {
               <Zap className="w-6 h-6 text-background" />
             </motion.div>
             <span className="font-display text-xl font-bold text-gradient hidden sm:block">
-              TECHFEST'25
+              ABHIYANTRAN
             </span>
+            <span className="text-xs text-muted-foreground hidden sm:block font-body -mt-0.5">NIT Sikkim</span>
           </Link>
 
           {/* Desktop Navigation */}
