@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Zap } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const navLinks = [
@@ -26,19 +26,21 @@ export const Navbar = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <motion.div
-              whileHover={{ rotate: 180 }}
-              transition={{ duration: 0.3 }}
-              className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center"
-            >
-              <Zap className="w-6 h-6 text-background" />
-            </motion.div>
-            <span className="font-display text-xl font-bold text-gradient hidden sm:block">
-              ABHIYANTRAN
-            </span>
-            <span className="text-xs text-muted-foreground hidden sm:block font-body -mt-0.5">NIT Sikkim</span>
+          {/* Logo - NIT Sikkim */}
+          <Link to="/" className="flex items-center gap-3 group">
+            <motion.img
+              src="/nit-logo.png"
+              alt="NIT Sikkim"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+              className="h-16 w-16 object-contain sm:h-20 sm:w-20"
+            />
+            <div className="hidden sm:flex flex-col items-start leading-tight">
+              <span className="font-display text-xl font-bold text-gradient">
+                ABHIYANTRAN
+              </span>
+              <span className="text-xs text-muted-foreground font-body">NIT Sikkim</span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
