@@ -30,7 +30,7 @@ const announcements = [
   {
     id: 4,
     title: 'Gaming Tournament Rules Updated',
-    content: 'The rules for the Valorant Tournament have been updated. Teams must now have 5 members from the same institution. Check the events page for details.',
+    content: 'The rules for the Esports Gaming Tournament have been updated. Check the events page for details.',
     date: 'January 22, 2025',
     type: 'warning',
     pinned: false,
@@ -46,7 +46,7 @@ const announcements = [
   {
     id: 6,
     title: 'Workshop Registrations Open',
-    content: 'Registrations for all workshops including Web Dev Bootcamp and AI/ML Workshop are now open. Limited seats available!',
+    content: 'Registrations for all workshops are now open. Limited seats available!',
     date: 'January 18, 2025',
     type: 'info',
     pinned: false,
