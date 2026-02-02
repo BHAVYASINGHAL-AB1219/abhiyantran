@@ -20,23 +20,22 @@ export const HeroSection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-4xl mx-auto">
-          {/* Badge - NIT Sikkim */}
+          {/* Badge - NIT Sikkim + Date */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/30 mb-4"
+            className="inline-flex items-center gap-3 px-5 py-3 rounded-full glass border border-primary/30 mb-6 flex-shrink-0"
           >
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-sm font-body text-primary font-medium">National Institute of Technology Sikkim</span>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.05 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/30 mb-6"
-          >
-            <span className="text-sm font-body text-primary">March 15-17, 2025</span>
+            <img src="/nit-logo.png" alt="NIT Sikkim" className="h-14 w-14 sm:h-16 sm:w-16 object-contain flex-shrink-0" />
+            <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
+              <span className="text-sm sm:text-base font-body text-primary font-medium leading-snug">
+                National Institute of Technology Sikkim
+              </span>
+              <span className="text-xs sm:text-sm font-body text-primary/90 font-medium uppercase tracking-wider mt-0.5">
+                MARCH 15-17, 2025
+              </span>
+            </div>
           </motion.div>
 
           {/* Main Title - ABHIYANTRAN */}

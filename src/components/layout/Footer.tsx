@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Zap, Mail, MapPin, Phone, Twitter, Instagram, Linkedin, Github } from 'lucide-react';
+import { Mail, MapPin, Phone, Twitter, Instagram, Linkedin, Github } from 'lucide-react';
 
 const footerLinks = {
   quickLinks: [
@@ -33,10 +33,8 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-4">
-            <Link to="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                <Zap className="w-6 h-6 text-background" />
-              </div>
+            <Link to="/" className="flex items-center gap-3">
+              <img src="/nit-logo.png" alt="NIT Sikkim" className="h-16 w-16 sm:h-20 sm:w-20 object-contain flex-shrink-0" />
               <span className="font-display text-xl font-bold text-gradient">
                 ABHIYANTRAN
               </span>
