@@ -10,7 +10,6 @@ const navLinks = [
   { path: '/schedule', label: 'Schedule', icon: CalendarDays },
   { path: '/speakers', label: 'Speakers', icon: Users },
   { path: '/sponsors', label: 'Sponsors', icon: Handshake },
-  { path: '/organising-team', label: 'Team' }
   { path: '/announcements', label: 'Announcements', icon: Megaphone },
 
 ];
