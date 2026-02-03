@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Home, CalendarRange, CalendarDays, Users, Handshake, Megaphone, UsersRound } from 'lucide-react';
+
+
+
+import { Menu, X, Home, CalendarRange, CalendarDays, Users, Handshake, Megaphone, UsersRound, ShoppingBag } from 'lucide-react';
 
 const navLinks = [
   { path: '/', label: 'Home', icon: Home },
@@ -9,8 +12,12 @@ const navLinks = [
   { path: '/schedule', label: 'Schedule', icon: CalendarDays },
   { path: '/speakers', label: 'Speakers', icon: Users },
   { path: '/sponsors', label: 'Sponsors', icon: Handshake },
-  { path: '/announcements', label: 'Announcements', icon: Megaphone },
+  { path: '/merch', label: 'Buy Merch', icon: ShoppingBag },
   { path: '/organising-team', label: 'Organising Team', icon: UsersRound },
+  { path: '/announcements', label: 'Announcements', icon: Megaphone },
+
+  { path: '/organising-team', label: 'Organising Team', icon: UsersRound },
+
 ];
 
 export const Navbar = () => {
@@ -42,7 +49,6 @@ export const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
-
             {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = location.pathname === link.path;
@@ -51,7 +57,6 @@ export const Navbar = () => {
                   key={link.path}
                   to={link.path}
                   className="relative px-4 py-2 group flex items-center gap-2"
-
                 >
                   <motion.span
                     className="flex items-center gap-2"
@@ -64,15 +69,13 @@ export const Navbar = () => {
                       transition={{ duration: 0.4 }}
                     >
                       <Icon
-                        className={`w-4 h-4 shrink-0 transition-colors ${
-                          isActive ? 'text-primary' : 'text-foreground/60 group-hover:text-primary'
-                        }`}
+                        className={`w-4 h-4 shrink-0 transition-colors ${isActive ? 'text-primary' : 'text-foreground/60 group-hover:text-primary'
+                          }`}
                       />
                     </motion.span>
                     <span
-                      className={`font-body text-sm font-medium transition-colors ${
-                        isActive ? 'text-primary' : 'text-foreground/70 group-hover:text-foreground'
-                      }`}
+                      className={`font-body text-sm font-medium transition-colors ${isActive ? 'text-primary' : 'text-foreground/70 group-hover:text-foreground'
+                        }`}
                     >
                       {link.label}
                     </span>
@@ -101,12 +104,14 @@ export const Navbar = () => {
             <motion.img
               src="/abhilogo.svg"
               alt="Abhiyantran Logo"
+
               className="h-10 w-10 object-contain"
               whileHover={{ 
+
                 scale: 1.1,
                 rotate: [0, -5, 5, -5, 0],
               }}
-              transition={{ 
+              transition={{
                 scale: { type: 'spring', stiffness: 400, damping: 17 },
                 rotate: { duration: 0.5 }
               }}
@@ -133,10 +138,7 @@ export const Navbar = () => {
             className="md:hidden glass border-t border-primary/20"
           >
             <div className="container mx-auto px-4 py-4 flex flex-col gap-2">
-
               {/* Abhiyantran Logo in Mobile Menu */}
-
-              
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -163,11 +165,10 @@ export const Navbar = () => {
                     <Link
                       to={link.path}
                       onClick={() => setIsOpen(false)}
-                      className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
-                        location.pathname === link.path
+                      className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${location.pathname === link.path
                           ? 'bg-primary/20 text-primary'
                           : 'text-foreground/70 hover:bg-muted hover:text-foreground'
-                      }`}
+                        }`}
                     >
                       <motion.span
                         initial={{ scale: 0, rotate: -180 }}
