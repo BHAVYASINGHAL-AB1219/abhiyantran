@@ -11,6 +11,7 @@ import Sponsors from "./pages/Sponsors";
 import Announcements from "./pages/Announcements";
 import OrganisingTeam from "./pages/OrganisingTeam";
 import Merch from "./pages/Merch";
+import EventDetail from "./pages/EventDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/events" element={<Events />} />
+          <Route path="/events/:id" element={<EventDetail />} />
           <Route path="/schedule" element={<Schedule />} />
           <Route path="/speakers" element={<Speakers />} />
           <Route path="/sponsors" element={<Sponsors />} />
