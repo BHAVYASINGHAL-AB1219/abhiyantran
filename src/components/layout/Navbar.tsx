@@ -4,12 +4,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Home, CalendarRange, CalendarDays, Users, Handshake, Megaphone } from 'lucide-react';
 
 const navLinks = [
+
   { path: '/', label: 'Home', icon: Home },
   { path: '/events', label: 'Events', icon: CalendarRange },
   { path: '/schedule', label: 'Schedule', icon: CalendarDays },
   { path: '/speakers', label: 'Speakers', icon: Users },
   { path: '/sponsors', label: 'Sponsors', icon: Handshake },
   { path: '/announcements', label: 'Announcements', icon: Megaphone },
+
 ];
 
 export const Navbar = () => {
@@ -44,6 +46,7 @@ export const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
+
             {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = location.pathname === link.path;
@@ -52,6 +55,7 @@ export const Navbar = () => {
                   key={link.path}
                   to={link.path}
                   className="relative px-4 py-2 group flex items-center gap-2"
+
                 >
                   <motion.span
                     className="flex items-center gap-2"
@@ -130,7 +134,10 @@ export const Navbar = () => {
             className="md:hidden glass border-t border-primary/20"
           >
             <div className="container mx-auto px-4 py-4 flex flex-col gap-2">
+
               {/* Abhiyantran Logo in Mobile Menu */}
+
+              
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}

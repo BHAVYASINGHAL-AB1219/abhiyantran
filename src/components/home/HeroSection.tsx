@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Calendar, MapPin, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { CountdownTimer } from './CountdownTimer';
+import { Link } from "react-router-dom";
+
 
 const stats = [
   { icon: Calendar, value: '3', label: 'Days' },
@@ -73,9 +75,15 @@ export const HeroSection = () => {
               Register Now
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button size="lg" variant="outline" className="font-display text-base border-primary/50 hover:bg-primary/10">
-              View Events
-            </Button>
+              <Link to="/events">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="font-display text-base border-primary/50 hover:bg-primary/10"
+                >
+                  View Events
+                </Button>
+              </Link>
           </motion.div>
 
           {/* Countdown */}

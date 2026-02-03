@@ -108,13 +108,15 @@ const events = [
     id: 16,
     title: 'Black Box',
     category: 'Technical',
-    description: 'Reverse engineer the unknown! Decode the black box system using inputs and outputs.',
-    duration: '3 hours',
-    team: '1-2 members',
-    venue: 'Lab Complex A',
+    description: 'Analyze unknown components or problems and identify their function using logic and technical knowledge.',
+    duration: '2–3 Hours',
+    team: 'Team of 2–3 Members',
+    venue: 'Announced Later',
     prize: '₹5,000',
+
     registrationFee: '₹50',
     image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop',
+
   },
   // Gaming
   {
@@ -128,6 +130,127 @@ const events = [
     prize: '₹40,000',
     registrationFee: '₹100',
     image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&h=300&fit=crop',
+  },
+  {
+    id: 18,
+    title: 'B-Plan',
+    category: 'Non-Technical',
+    description: 'Pitch your bold startup ideas and innovative solutions to prove their real-world potential.',
+    duration: '20 min per team',
+    team: '1-4 members',
+    venue: 'will be announced later',
+    prize: 'Incubation support and mentorship under NIT Sikkim Incubation Centre.',
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=300&fit=crop',
+  },
+  {
+    id: 19,
+    title: 'Maths Olympiad',
+    category: 'Non-Technical',
+    description: 'Maths Olympiad is your chance to challenge your mind, solve exciting problems, and prove your mathematical skills against top competitors.',
+    duration: '3 - Hours',
+    team: '1 Member',
+    venue: 'Announced Later',
+    prize: '₹5,000',
+    image: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?w=400&h=300&fit=crop',
+  },
+  {
+    id: 20,
+    title: 'Line Follower',
+    category: 'Technical',
+    description: 'Design and construct an autonomous robot capable of following a black line on a white background with speed and precision.',
+    duration: '3 - Hours',
+    team: '2-4 Member',
+    venue: 'Announce Later',
+    prize: '₹20,000',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/4/4c/40365_Line_Follower_Robot.jpg',
+  },
+  {
+    id: 21,
+    title: 'Indian Case Challenge',
+    category: 'Non-Technical',
+    description: 'Solve real-world business or social case problems and present practical, impactful solutions.',
+    duration: '2–3 Hours',
+    team: 'Team of 2–4 Members',
+    venue: 'Announced Later',
+    prize: '₹30,000',
+    image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&h=300&fit=crop',
+  },
+  {
+    id: 22,
+    title: 'Best of Waste',
+    category: 'Non-Technical',
+    description: 'Turn waste materials into creative and useful products through innovation and design.',
+    duration: '4-6 Hours',
+    team: 'Team of 2–3 Members',
+    venue: 'Announced Later',
+    prize: '₹10,000',
+    image: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop',
+  },
+  {
+    id: 23,
+    title: 'Bridge It',
+    category: 'Technical',
+    description: 'Design and build a strong and efficient bridge model under given constraints.',
+    duration: '2–3 Hours',
+    team: 'Team of 2–4 Members',
+    venue: 'Announced Later',
+    prize: '₹5,000',
+    image: 'https://images.unsplash.com/photo-1598223631980-60b6b0808381?w=400&h=300&fit=crop',
+  },
+  {
+    id: 24,
+    title: 'Seismic Building Design',
+    category: 'Technical',
+    description: 'Design an earthquake-resistant building model focusing on structural stability and safety.',
+    duration: '2–3 Hours',
+    team: 'Individual Participation',
+    venue: 'Announced Later',
+    prize: '₹10,000',
+    image: 'https://images.unsplash.com/photo-1590059902640-c322b7d2f9d6?w=400&h=300&fit=crop',
+  },
+  {
+    id: 25,
+    title: 'Tech Exhibition',
+    category: 'Technical',
+    description: 'Showcase innovative projects, prototypes, or technical models demonstrating creativity and practical application of technology.',
+    duration: '3–4 Hours (or Full Day Display)',
+    team: 'Team of 2–4 Members',
+    venue: 'Announced Later',
+    prize: 'Trophy + Gifts',
+    image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=400&h=300&fit=crop',
+  },
+  {
+    id: 26,
+    title: 'Town Planning',
+    category: 'Technical',
+    description: 'Design a smart and sustainable town layout focusing on infrastructure, planning, and resource management.',
+    duration: '2–3 Hours',
+    team: 'Team of 2–4 Members',
+    venue: 'Announced Later',
+    prize: '₹5,000',
+    image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=400&h=300&fit=crop',
+  },
+  {
+    id: 27,
+    title: 'JAM (Just A Minute)',
+    category: 'Non-Technical',
+    description: 'Speak on a given topic for one minute to test confidence, spontaneity, and communication skills.',
+    duration: '1–2 Hours (Depending on Rounds)',
+    team: 'Individual Participation',
+    venue: 'Announced Later',
+    prize: 'Trophy + Gifts',
+    image: 'https://images.unsplash.com/photo-1478737270239-2f52b06c6c22?w=400&h=300&fit=crop',
+  },
+  {
+    id: 28,
+    title: 'Autocat',
+    category: 'Technical',
+    description: 'Design or demonstrate automation-based solutions showcasing innovation and technical skills.',
+    duration: '2–3 Hours',
+    team: 'Team of 2–4 Members',
+    venue: 'Announced Later',
+    prize: '₹5,000',
+    image: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=400&h=300&fit=crop',
   },
 ];
 
@@ -168,11 +291,10 @@ const Events = () => {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-5 py-2 rounded-full font-body text-sm font-medium transition-all ${
-                  selectedCategory === category
-                    ? 'bg-primary text-primary-foreground glow-cyan'
-                    : 'glass-hover text-foreground/70 hover:text-foreground'
-                }`}
+                className={`px-5 py-2 rounded-full font-body text-sm font-medium transition-all ${selectedCategory === category
+                  ? 'bg-primary text-primary-foreground glow-cyan'
+                  : 'glass-hover text-foreground/70 hover:text-foreground'
+                  }`}
               >
                 {category}
               </button>
