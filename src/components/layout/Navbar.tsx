@@ -16,7 +16,7 @@ const navLinks = [
   { path: '/organising-team', label: 'Organising Team', icon: UsersRound },
   { path: '/announcements', label: 'Announcements', icon: Megaphone },
 
-  { path: '/organising-team', label: 'Organising Team', icon: UsersRound },
+
 
 ];
 
