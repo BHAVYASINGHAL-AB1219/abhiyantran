@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Layout } from '@/components/layout/Layout';
 import { EventRegistrationForm } from '@/components/EventRegistrationForm';
 import { getEventById } from '@/data/eventsData';
-import { Clock, Users, MapPin, Tag, IndianRupee, ArrowLeft, CheckCircle } from 'lucide-react';
+import { Clock, Users, MapPin, Tag, ArrowLeft, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const EventDetail = () => {
@@ -163,34 +163,24 @@ const EventDetail = () => {
                                         </div>
                                     </div>
 
-                                    {event.registrationFee && (
-                                        <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
-                                            <IndianRupee className="w-5 h-5 text-primary" />
-                                            <div>
-                                                <p className="text-xs text-muted-foreground">Registration Fee</p>
-                                                <p className="font-medium">{event.registrationFee}</p>
-                                            </div>
-                                        </div>
-                                    )}
-                                </div>
-
-                                {/* Quick Info */}
-                                <div className="mt-6 pt-6 border-t border-border">
-                                    <h4 className="font-display text-sm font-semibold mb-3">What's Included</h4>
-                                    <ul className="space-y-2">
-                                        <li className="flex items-center gap-2 text-sm text-muted-foreground">
-                                            <CheckCircle className="w-4 h-4 text-green-500" />
-                                            Certificate of Participation
-                                        </li>
-                                        <li className="flex items-center gap-2 text-sm text-muted-foreground">
-                                            <CheckCircle className="w-4 h-4 text-green-500" />
-                                            Refreshments
-                                        </li>
-                                        <li className="flex items-center gap-2 text-sm text-muted-foreground">
-                                            <CheckCircle className="w-4 h-4 text-green-500" />
-                                            Event Kit & Goodies
-                                        </li>
-                                    </ul>
+                                    {/* Quick Info */}
+                                    <div className="mt-6 pt-6 border-t border-border">
+                                        <h4 className="font-display text-sm font-semibold mb-3">What's Included</h4>
+                                        <ul className="space-y-2">
+                                            <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                                                <CheckCircle className="w-4 h-4 text-green-500" />
+                                                Certificate of Participation
+                                            </li>
+                                            <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                                                <CheckCircle className="w-4 h-4 text-green-500" />
+                                                Refreshments
+                                            </li>
+                                            <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                                                <CheckCircle className="w-4 h-4 text-green-500" />
+                                                Event Kit & Goodies
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </motion.div>
                         </div>

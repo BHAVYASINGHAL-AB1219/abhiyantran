@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Layout } from '@/components/layout/Layout';
-import { Clock, Users, MapPin, Tag, IndianRupee, ArrowRight } from 'lucide-react';
+import { Clock, Users, MapPin, Tag, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { events, categories } from '@/data/eventsData';
 
@@ -108,12 +108,6 @@ const Events = () => {
                           <Tag className="w-3 h-3 text-primary" />
                           <span>{event.prize}</span>
                         </div>
-                        {event.registrationFee && (
-                          <div className="flex items-center gap-1 col-span-2">
-                            <IndianRupee className="w-3 h-3 text-primary" />
-                            <span>Registration: {event.registrationFee}</span>
-                          </div>
-                        )}
                       </div>
 
                       <Link to={`/events/${event.id}`}>
