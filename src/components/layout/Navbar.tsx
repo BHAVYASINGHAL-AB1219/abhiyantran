@@ -10,6 +10,7 @@ const navLinks = [
   { path: '/schedule', label: 'Schedule' },
   { path: '/speakers', label: 'Speakers' },
   { path: '/sponsors', label: 'Sponsors' },
+  { path: '/merch', label: 'Buy Merch' },
   { path: '/organising-team', label: 'Team' },
   { path: '/announcements', label: 'Announcements' },
 ];
@@ -54,8 +55,8 @@ export const Navbar = () => {
               >
                 <span
                   className={`font-body text-sm font-medium transition-colors ${location.pathname === link.path
-                      ? 'text-primary'
-                      : 'text-foreground/70 group-hover:text-foreground'
+                    ? 'text-primary'
+                    : 'text-foreground/70 group-hover:text-foreground'
                     }`}
                 >
                   {link.label}
@@ -108,8 +109,8 @@ export const Navbar = () => {
                     to={link.path}
                     onClick={() => setIsOpen(false)}
                     className={`block px-4 py-3 rounded-lg transition-colors ${location.pathname === link.path
-                        ? 'bg-primary/20 text-primary'
-                        : 'text-foreground/70 hover:bg-muted hover:text-foreground'
+                      ? 'bg-primary/20 text-primary'
+                      : 'text-foreground/70 hover:bg-muted hover:text-foreground'
                       }`}
                   >
                     {link.label}
