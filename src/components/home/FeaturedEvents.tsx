@@ -11,20 +11,20 @@ const events = [
   },
   {
     icon: Trophy,
-    title: 'Coding Contest',
-    description: 'Compete with the best coders in the region',
+    title: 'Robo War',
+    description: 'Battle of bots! Build and compete with your robot in an intense arena combat.',
     color: 'from-secondary to-neon-purple',
   },
   {
     icon: Lightbulb,
-    title: 'Startup Pitch',
-    description: 'Present your ideas to top investors',
+    title: 'Drone Racing Championship',
+    description: 'High-speed FPV drone racing through challenging obstacle courses.',
     color: 'from-neon-purple to-primary',
   },
   {
     icon: Gamepad2,
-    title: 'Gaming Arena',
-    description: 'Esports tournaments and gaming challenges',
+    title: 'Technical Treasure Hunt',
+    description: 'Solve technical puzzles and clues to find hidden treasures across the campus.',
     color: 'from-neon-blue to-secondary',
   },
 ];

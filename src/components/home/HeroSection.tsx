@@ -49,9 +49,9 @@ export const HeroSection = () => {
           >
             <span className="text-gradient">ABHIYANTRAN</span>
             <br />
-            <span className="text-foreground">THE FUTURE OF</span>
+            <span className="text-foreground">Fueling Minds</span>
             <br />
-            <span className="text-foreground">TECHNOLOGY STARTS HERE</span>
+            <span className="text-foreground">Forging the Future</span>
           </motion.h1>
 
           {/* Subtitle */}
