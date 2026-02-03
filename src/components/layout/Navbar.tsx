@@ -1,17 +1,16 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Home, CalendarRange, CalendarDays, Users, Handshake, Megaphone } from 'lucide-react';
+import { Menu, X, Home, CalendarRange, CalendarDays, Users, Handshake, Megaphone, UsersRound } from 'lucide-react';
 
 const navLinks = [
-
   { path: '/', label: 'Home', icon: Home },
   { path: '/events', label: 'Events', icon: CalendarRange },
   { path: '/schedule', label: 'Schedule', icon: CalendarDays },
   { path: '/speakers', label: 'Speakers', icon: Users },
   { path: '/sponsors', label: 'Sponsors', icon: Handshake },
   { path: '/announcements', label: 'Announcements', icon: Megaphone },
-
+  { path: '/organising-team', label: 'Organising Team', icon: UsersRound },
 ];
 
 export const Navbar = () => {
