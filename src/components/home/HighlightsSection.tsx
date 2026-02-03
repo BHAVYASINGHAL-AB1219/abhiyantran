@@ -1,27 +1,28 @@
 import { motion } from 'framer-motion';
-import { Mic2, Award, Rocket, Globe } from 'lucide-react';
+import { Mic2, Award, Rocket, Globe, Lightbulb } from 'lucide-react';
 
 const highlights = [
   {
-    icon: Mic2,
-    title: '20+ Expert Speakers',
-    description: 'Industry leaders sharing insights',
-  },
-  {
     icon: Award,
-    title: '₹10L+ in Prizes',
+    title: '₹3L+ Total Prizes',
     description: 'Win amazing rewards and goodies',
   },
   {
     icon: Rocket,
-    title: '50+ Workshops',
+    title: '20+ Events',
     description: 'Hands-on learning experiences',
   },
   {
     icon: Globe,
     title: 'Global Network',
-    description: 'Connect with tech enthusiasts worldwide',
+    description: 'Connect with tech enthusiasts Nationwide',
   },
+ {
+  icon: Lightbulb,
+  title: 'Innovation Showcase',
+  description: 'Present ideas that shape the future',
+  },
+
 ];
 
 export const HighlightsSection = () => {
