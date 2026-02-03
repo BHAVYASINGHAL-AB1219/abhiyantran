@@ -34,8 +34,8 @@ export const HeroSection = () => {
               <span className="text-sm sm:text-base font-body text-primary font-medium leading-snug">
                 National Institute of Technology Sikkim
               </span>
-              <span className="text-xs sm:text-sm font-body text-primary/90 font-medium uppercase tracking-wider mt-0.5">
-                MARCH 15-17, 2025
+              <span className="text-xs sm:text-sm font-body text-primary/90 font-small tracking-wider mt-0.5">
+                  An Institute of National Importance
               </span>
             </div>
           </motion.div>
