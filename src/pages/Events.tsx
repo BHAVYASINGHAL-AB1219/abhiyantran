@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Layout } from '@/components/layout/Layout';
-import { Clock, Users, MapPin, Tag, ArrowRight } from 'lucide-react';
+import { Clock, Users, MapPin, Tag, IndianRupee, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const categories = ['All', 'Technical', 'Non-Technical', 'Workshop', 'Gaming'];
@@ -16,6 +16,7 @@ const events = [
     team: '2-4 members',
     venue: 'Innovation Hub',
     prize: '₹50,000',
+    registrationFee: '₹200',
     image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=300&fit=crop',
   },
   // Technical events
@@ -28,6 +29,7 @@ const events = [
     team: '2-4 members',
     venue: 'Robotics Arena',
     prize: '₹30,000',
+    registrationFee: '₹150',
     image: 'https://images.unsplash.com/photo-1561557944-6e7860b7b1e2?w=400&h=300&fit=crop',
   },
   {
@@ -39,6 +41,7 @@ const events = [
     team: 'Individual',
     venue: 'Outdoor Arena',
     prize: '₹20,000',
+    registrationFee: '₹100',
     image: 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=400&h=300&fit=crop',
   },
   {
@@ -50,6 +53,7 @@ const events = [
     team: '2-3 members',
     venue: 'Sand Arena',
     prize: '₹30,000',
+    registrationFee: '₹150',
     image: 'https://images.unsplash.com/photo-1614732414444-096e5f1122d5?w=400&h=300&fit=crop',
   },
   {
@@ -61,6 +65,7 @@ const events = [
     team: '2-4 members',
     venue: 'Campus Wide',
     prize: '₹20,000',
+    registrationFee: '₹100',
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop',
   },
   {
@@ -72,6 +77,7 @@ const events = [
     team: '2-3 members',
     venue: 'Workshop Hall',
     prize: '₹40,000',
+    registrationFee: '₹150',
     image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop',
   },
   {
@@ -83,6 +89,7 @@ const events = [
     team: '1-2 members',
     venue: 'Electronics Lab',
     prize: '₹5,000',
+    registrationFee: '₹50',
     image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
   },
   {
@@ -94,6 +101,7 @@ const events = [
     team: '2 members',
     venue: 'Electronics Lab',
     prize: '₹5,000',
+    registrationFee: '₹50',
     image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop',
   },
   {
@@ -105,7 +113,10 @@ const events = [
     team: 'Team of 2–3 Members',
     venue: 'Announced Later',
     prize: '₹5,000',
-    image: 'https://images.unsplash.com/photo-1517420704952-d9f39714a1d9?w=400&h=300&fit=crop',
+
+    registrationFee: '₹50',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop',
+
   },
   // Gaming
   {
@@ -117,6 +128,7 @@ const events = [
     team: 'Solo/Team',
     venue: 'Gaming Arena',
     prize: '₹40,000',
+    registrationFee: '₹100',
     image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&h=300&fit=crop',
   },
   {
@@ -343,6 +355,10 @@ const Events = () => {
                         <div className="flex items-center gap-1">
                           <Tag className="w-3 h-3 text-primary" />
                           <span>{event.prize}</span>
+                        </div>
+                        <div className="flex items-center gap-1 col-span-2">
+                          <IndianRupee className="w-3 h-3 text-primary" />
+                          <span>Registration: {event.registrationFee}</span>
                         </div>
                       </div>
 
