@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+
+
+
 import { Menu, X, Home, CalendarRange, CalendarDays, Users, Handshake, Megaphone, UsersRound, ShoppingBag } from 'lucide-react';
 
 const navLinks = [
@@ -12,6 +15,9 @@ const navLinks = [
   { path: '/merch', label: 'Buy Merch', icon: ShoppingBag },
   { path: '/organising-team', label: 'Organising Team', icon: UsersRound },
   { path: '/announcements', label: 'Announcements', icon: Megaphone },
+
+  { path: '/organising-team', label: 'Organising Team', icon: UsersRound },
+
 ];
 
 export const Navbar = () => {
@@ -27,21 +33,18 @@ export const Navbar = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo - NIT Sikkim */}
-          <Link to="/" className="flex items-center gap-3 group">
+          {/* Left: NIT Sikkim logo + text (single line) */}
+          <Link to="/" className="flex items-center gap-2 sm:gap-3 group">
             <motion.img
               src="/nit-logo.png"
               alt="NIT Sikkim"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
-              className="h-16 w-16 object-contain sm:h-20 sm:w-20"
+              className="h-10 w-10 sm:h-12 sm:w-12 object-contain"
             />
-            <div className="hidden sm:flex flex-col items-start leading-tight">
-              <span className="font-display text-xl font-bold text-gradient">
-                ABHIYANTRAN
-              </span>
-              <span className="text-xs text-muted-foreground font-body">NIT Sikkim</span>
-            </div>
+            <span className="hidden sm:inline font-display text-lg font-bold text-foreground whitespace-nowrap">
+              NIT SIKKIM
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -88,18 +91,23 @@ export const Navbar = () => {
             })}
           </div>
 
-          {/* Abhiyantran Logo */}
+          {/* Right: ABHIYANTRAN text + logo (single line) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="hidden md:flex items-center"
+            className="hidden md:flex items-center gap-2"
           >
+            <span className="font-display text-lg font-bold text-gradient whitespace-nowrap">
+              ABHIYANTRAN
+            </span>
             <motion.img
               src="/abhilogo.svg"
               alt="Abhiyantran Logo"
-              className="h-12 w-12 object-contain"
-              whileHover={{
+
+              className="h-10 w-10 object-contain"
+              whileHover={{ 
+
                 scale: 1.1,
                 rotate: [0, -5, 5, -5, 0],
               }}

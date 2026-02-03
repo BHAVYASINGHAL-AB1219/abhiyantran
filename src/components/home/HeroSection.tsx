@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Calendar, MapPin, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -11,7 +12,16 @@ const stats = [
   { icon: MapPin, value: '5000+', label: 'Attendees' },
 ];
 
+const FLIP_INTERVAL_MS = 3000;
+
 export const HeroSection = () => {
+  const [showLogo, setShowLogo] = useState(false);
+
+  useEffect(() => {
+    const id = setInterval(() => setShowLogo((prev) => !prev), FLIP_INTERVAL_MS);
+    return () => clearInterval(id);
+  }, []);
+
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       {/* Background Effects */}
@@ -40,19 +50,62 @@ export const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* Main Title - ABHIYANTRAN */}
-          <motion.h1
+          {/* Main Title - Flip between text and logo every 3s */}
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display text-4xl sm:text-5xl md:text-7xl font-bold mb-6 leading-tight"
+            className="mb-6 min-h-[200px] sm:min-h-[220px] md:min-h-[260px] flex items-center justify-center"
+            style={{ perspective: '1000px' }}
           >
-            <span className="text-gradient">ABHIYANTRAN</span>
-            <br />
-            <span className="text-foreground">Fueling Minds</span>
-            <br />
-            <span className="text-foreground">Forging the Future</span>
-          </motion.h1>
+
+
+
+
+
+            <motion.div
+              className="relative w-full flex items-center justify-center"
+              style={{ transformStyle: 'preserve-3d' }}
+              animate={{ rotateY: showLogo ? 180 : 0 }}
+              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              {/* Front face: ABHIYANTRAN text */}
+              <div
+                className="absolute inset-0 flex flex-col items-center justify-center w-full"
+                style={{
+                  backfaceVisibility: 'hidden',
+                  WebkitBackfaceVisibility: 'hidden',
+                }}
+              >
+                <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-bold leading-tight text-center">
+                  <span className="text-gradient">ABHIYANTRAN</span>
+                  <br />
+                  <span className="text-foreground">THE FUTURE OF</span>
+                  <br />
+                  <span className="text-foreground">TECHNOLOGY STARTS HERE</span>
+                </h1>
+              </div>
+              {/* Back face: Logo + Abhiyantran (flipped so it reads correctly when card rotates) */}
+              <div
+                className="absolute inset-0 flex flex-col items-center justify-center w-full"
+                style={{
+                  backfaceVisibility: 'hidden',
+                  WebkitBackfaceVisibility: 'hidden',
+                  transform: 'rotateY(180deg)',
+                }}
+              >
+                <img
+                  src="/abhilogo.svg"
+                  alt="Abhiyantran"
+                  className="h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 object-contain mb-4"
+                />
+                <span className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-gradient">
+                  Abhiyantran
+                </span>
+              </div>
+            </motion.div>
+          </motion.div>
+
 
           {/* Subtitle */}
           <motion.p
