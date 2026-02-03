@@ -58,6 +58,11 @@ export const HeroSection = () => {
             className="mb-6 min-h-[200px] sm:min-h-[220px] md:min-h-[260px] flex items-center justify-center"
             style={{ perspective: '1000px' }}
           >
+
+
+
+
+
             <motion.div
               className="relative w-full flex items-center justify-center"
               style={{ transformStyle: 'preserve-3d' }}
@@ -100,6 +105,7 @@ export const HeroSection = () => {
               </div>
             </motion.div>
           </motion.div>
+
 
           {/* Subtitle */}
           <motion.p
