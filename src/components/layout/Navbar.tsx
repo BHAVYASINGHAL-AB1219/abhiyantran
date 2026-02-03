@@ -10,6 +10,7 @@ const navLinks = [
   { path: '/schedule', label: 'Schedule' },
   { path: '/speakers', label: 'Speakers' },
   { path: '/sponsors', label: 'Sponsors' },
+  { path: '/organising-team', label: 'Team' },
   { path: '/announcements', label: 'Announcements' },
 ];
 
@@ -52,11 +53,10 @@ export const Navbar = () => {
                 className="relative px-4 py-2 group"
               >
                 <span
-                  className={`font-body text-sm font-medium transition-colors ${
-                    location.pathname === link.path
+                  className={`font-body text-sm font-medium transition-colors ${location.pathname === link.path
                       ? 'text-primary'
                       : 'text-foreground/70 group-hover:text-foreground'
-                  }`}
+                    }`}
                 >
                   {link.label}
                 </span>
@@ -107,11 +107,10 @@ export const Navbar = () => {
                   <Link
                     to={link.path}
                     onClick={() => setIsOpen(false)}
-                    className={`block px-4 py-3 rounded-lg transition-colors ${
-                      location.pathname === link.path
+                    className={`block px-4 py-3 rounded-lg transition-colors ${location.pathname === link.path
                         ? 'bg-primary/20 text-primary'
                         : 'text-foreground/70 hover:bg-muted hover:text-foreground'
-                    }`}
+                      }`}
                   >
                     {link.label}
                   </Link>
