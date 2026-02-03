@@ -116,6 +116,7 @@ const EventDetail = () => {
 
                             {/* Registration Form */}
                             <EventRegistrationForm
+                                eventId={event.id}
                                 eventTitle={event.title}
                                 maxTeamSize={event.maxTeamSize}
                             />

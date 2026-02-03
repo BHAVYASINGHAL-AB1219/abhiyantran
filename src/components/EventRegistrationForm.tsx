@@ -13,13 +13,16 @@ interface TeamMember {
 }
 
 interface EventRegistrationFormProps {
+    eventId: number;
     eventTitle: string;
     maxTeamSize: number;
 }
 
 const years = ['1st Year', '2nd Year', '3rd Year', '4th Year', '5th Year'];
 
-export const EventRegistrationForm = ({ eventTitle, maxTeamSize }: EventRegistrationFormProps) => {
+const API_BASE = import.meta.env.VITE_API_URL || '';
+
+export const EventRegistrationForm = ({ eventId, eventTitle, maxTeamSize }: EventRegistrationFormProps) => {
     const { toast } = useToast();
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -109,25 +112,60 @@ export const EventRegistrationForm = ({ eventTitle, maxTeamSize }: EventRegistra
 
         setIsSubmitting(true);
 
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        const payload = {
+            eventId,
+            eventTitle,
+            teamName: formData.teamName,
+            collegeName: formData.collegeName,
+            leaderName: formData.leaderName,
+            leaderEmail: formData.leaderEmail,
+            leaderPhone: formData.leaderPhone,
+            year: formData.year,
+            teamMembers: teamMembers.map(m => ({ name: m.name, email: m.email, phone: m.phone })),
+        };
 
-        toast({
-            title: "Registration Successful! 🎉",
-            description: `Your team "${formData.teamName}" has been registered for ${eventTitle}.`,
-        });
+        try {
+            const url = API_BASE ? `${API_BASE.replace(/\/$/, '')}/register.php` : '/api/register.php';
+            const res = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            });
+            const data = await res.json().catch(() => ({}));
 
-        // Reset form
-        setFormData({
-            teamName: '',
-            leaderName: '',
-            leaderEmail: '',
-            leaderPhone: '',
-            collegeName: '',
-            year: '',
-        });
-        setTeamMembers([]);
-        setIsSubmitting(false);
+            if (!res.ok) {
+                toast({
+                    title: 'Registration failed',
+                    description: [data?.error, data?.detail].filter(Boolean).join(' – ') || 'Please try again.',
+                    variant: 'destructive',
+                });
+                setIsSubmitting(false);
+                return;
+            }
+
+            toast({
+                title: "Registration Successful! 🎉",
+                description: `Your team "${formData.teamName}" has been registered for ${eventTitle}.`,
+            });
+
+            setFormData({
+                teamName: '',
+                leaderName: '',
+                leaderEmail: '',
+                leaderPhone: '',
+                collegeName: '',
+                year: '',
+            });
+            setTeamMembers([]);
+        } catch {
+            toast({
+                title: 'Registration failed',
+                description: 'Network error. Please try again.',
+                variant: 'destructive',
+            });
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
