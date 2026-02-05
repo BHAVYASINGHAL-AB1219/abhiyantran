@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const stats = [
   { icon: Calendar, value: '3', label: 'Days' },
-  { icon: Users, value: '50+', label: 'Events' },
+  { icon: Users, value: '20+', label: 'Events' },
   { icon: MapPin, value: '5000+', label: 'Attendees' },
 ];
 
@@ -60,9 +60,7 @@ export const HeroSection = () => {
           >
 
 
-
-
-
+            
             <motion.div
               className="relative w-full flex items-center justify-center"
               style={{ transformStyle: 'preserve-3d' }}
@@ -105,7 +103,6 @@ export const HeroSection = () => {
               </div>
             </motion.div>
           </motion.div>
-
 
           {/* Subtitle */}
           <motion.p
