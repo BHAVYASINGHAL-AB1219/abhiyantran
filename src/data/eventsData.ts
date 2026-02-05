@@ -155,7 +155,7 @@ export const events: EventData[] = [
     },
     {
         id: 15,
-        title: 'Anadigix',
+        title: 'CircuitForge',
         category: 'Technical',
         description: 'Analog and digital electronics challenge. Design and implement circuits to solve given problems.',
         duration: '4 hours',
@@ -275,7 +275,7 @@ export const events: EventData[] = [
     },
     {
         id: 21,
-        title: 'Indian Case Challenge',
+        title: 'The Analysis Arena',
         category: 'Non-Technical',
         description: 'Solve real-world business or social case problems and present practical, impactful solutions.',
         duration: '2–3 Hours',

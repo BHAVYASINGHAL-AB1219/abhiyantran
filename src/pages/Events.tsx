@@ -28,7 +28,7 @@ const Events = () => {
               Our <span className="text-gradient">Events</span>
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Choose from 50+ exciting events across various categories
+              Choose from 20+ exciting events across various categories
             </p>
           </motion.div>
 
