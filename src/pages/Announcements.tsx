@@ -28,14 +28,6 @@ const announcements = [
     pinned: false,
   },
   {
-    id: 4,
-    title: 'Gaming Tournament Rules Updated',
-    content: 'The rules for the Esports Gaming Tournament have been updated. Check the events page for details.',
-    date: 'January 22, 2025',
-    type: 'warning',
-    pinned: false,
-  },
-  {
     id: 5,
     title: 'Accommodation Available',
     content: 'Limited accommodation is available for outstation participants. Book your stay at our partner hotels at discounted rates.',

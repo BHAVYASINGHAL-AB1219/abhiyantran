@@ -16,7 +16,6 @@ const scheduleData = {
     { time: "11:30 AM", title: "Hackathon Begins", venue: "Innovation Hub", speaker: "", type: "event" },
     { time: "12:30 PM", title: "Lunch Break", venue: "Food Court", speaker: "", type: "break" },
     { time: "02:00 PM", title: "Web Dev Workshop", venue: "Lab Complex A", speaker: "John Doe", type: "workshop" },
-    { time: "06:00 PM", title: "Gaming Tournament", venue: "Gaming Arena", speaker: "", type: "event" },
   ],
   day2: [
     { time: "09:00 AM", title: "Startup Pitch Session", venue: "Main Auditorium", speaker: "Investor Panel", type: "event" },

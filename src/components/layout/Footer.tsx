@@ -34,7 +34,7 @@ export const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-3">
-              <img src="/nit-logo.png" alt="NIT Sikkim" className="h-16 w-16 sm:h-20 sm:w-20 object-contain flex-shrink-0" />
+              <img src="/abhilogo.svg" alt="NIT Sikkim" className="h-16 w-16 sm:h-20 sm:w-20 object-contain flex-shrink-0" />
               <span className="font-display text-xl font-bold text-gradient">
                 ABHIYANTRAN
               </span>
