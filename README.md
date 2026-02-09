@@ -24,7 +24,20 @@ To set up the project on a new machine:
     ./start.sh
     ```
     
-    Or run them manually:
+    ### Windows (PowerShell)
+    
+    1.  **Run Setup**:
+        ```powershell
+        ./setup.ps1
+        ```
+    
+    2.  **Start Application**:
+        ```powershell
+        ./start.ps1
+        ```
+
+    ### Manual Startup
+
     - **Frontend**: `npm run dev`
     - **Backend**: `cd backend && php -S 127.0.0.1:8000`
 
