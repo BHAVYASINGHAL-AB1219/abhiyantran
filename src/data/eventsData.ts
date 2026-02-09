@@ -15,7 +15,7 @@ export interface EventData {
 export const events: EventData[] = [
     {
         id: 2,
-        title: 'Hackathon 2025',
+        title: 'Hackathon',
         category: 'Technical',
         description: '24-hour hackathon to build innovative solutions for real-world problems.',
         duration: '24 hours',

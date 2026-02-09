@@ -14,7 +14,7 @@ const announcements = [
   {
     id: 2,
     title: 'Hackathon Problem Statements Released',
-    content: 'The problem statements for Hackathon 2025 are now live! Check out the challenges and start preparing your innovative solutions.',
+    content: 'The problem statements for Hackathon are now live! Check out the challenges and start preparing your innovative solutions.',
     date: 'January 24, 2025',
     type: 'info',
     pinned: true,
@@ -104,7 +104,7 @@ const Announcements = () => {
                       >
                         {/* Glow Effect */}
                         <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl" />
-                        
+
                         <div className="relative z-10">
                           <div className="flex items-start gap-4">
                             <div className={`w-10 h-10 rounded-lg ${config.bg} flex items-center justify-center flex-shrink-0`}>
