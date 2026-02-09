@@ -23,6 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 
-# Backend secrets – never commit
-backend/.env
-backend/vendor/
+

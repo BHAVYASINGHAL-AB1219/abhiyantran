@@ -1,73 +1,51 @@
-# Welcome to your Lovable project
+# Abhiyantran - Event Management System
 
-## Project info
+A full-stack event management application built with React (Vite) and PHP (native).
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 🚀 Quick Start
 
-## How can I edit this code?
+To set up the project on a new machine:
 
-There are several ways of editing your application.
+1.  **Clone the repository**:
+    ```bash
+    git clone <your-repo-url>
+    cd abhiyantran
+    ```
 
-**Use Lovable**
+2.  **Run the Setup Script**:
+    This script installs all dependencies (Node.js & PHP) and checks your configuration.
+    ```bash
+    ./setup.sh
+    ```
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+3.  **Start the Application**:
+    You can use the start script to launch both backend and frontend:
+    ```bash
+    ./start.sh
+    ```
+    
+    Or run them manually:
+    - **Frontend**: `npm run dev`
+    - **Backend**: `cd backend && php -S 127.0.0.1:8000`
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠 Prerequisites
 
-**Use your preferred IDE**
+- **Node.js**: v18 or later
+- **PHP**: v8.0 or later (with MongoDB extension)
+- **Composer**: Dependency manager for PHP
+- **MongoDB**: Local instance or MongoDB Atlas
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 📂 Project Structure
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- `src/`: Frontend React source code.
+- `backend/`: PHP backend API.
+- `setup.sh`: Automated setup script.
+- `start.sh`: Helper script to run both services.
 
-Follow these steps:
+## 🔐 Configuration
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+The backend uses a `.env` file for sensitive configuration.
+- `MONGODB_URI`: Your MongoDB connection string.
+- `MONGODB_DB`: Database name.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+> **Note**: This repository includes the `.env` file for ease of setup as per project requirements. In a production environment, ensure secrets are managed securely.
