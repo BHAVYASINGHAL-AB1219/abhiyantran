@@ -37,6 +37,15 @@ require $autoload;
 
 $raw = file_get_contents('php://input');
 $body = json_decode($raw, true);
+
+// DEBUG LOGGING
+$logFile = __DIR__ . '/debug.log';
+$logEntry = "Request at " . date('c') . "\n";
+$logEntry .= "Method: " . $_SERVER['REQUEST_METHOD'] . "\n";
+$logEntry .= "Input: " . $raw . "\n";
+$logEntry .= "-----------------\n";
+file_put_contents($logFile, $logEntry, FILE_APPEND);
+
 if (json_last_error() !== JSON_ERROR_NONE || !is_array($body)) {
     http_response_code(400);
     echo json_encode(['success' => false, 'error' => 'Invalid JSON']);
@@ -76,6 +85,21 @@ try {
     $db = $client->selectDatabase($dbName);
     $collection = $db->selectCollection('event_registrations');
 
+    // Check for duplicate registration
+    $existing = $collection->findOne([
+        'eventId' => $eventId,
+        'leader.email' => $leaderEmail,
+    ]);
+
+    if ($existing) {
+        http_response_code(409);
+        echo json_encode([
+            'success' => false,
+            'error' => 'You are already registered for this event with this email.',
+        ]);
+        exit;
+    }
+
     $doc = [
         'eventId' => $eventId,
         'eventTitle' => $eventTitle,
@@ -92,6 +116,11 @@ try {
     ];
 
     $result = $collection->insertOne($doc);
+
+    // DEBUG LOGGING
+    $logEntry = "Success: Inserted ID " . $result->getInsertedId() . "\n";
+    $logEntry .= "-----------------\n";
+    file_put_contents($logFile, $logEntry, FILE_APPEND);
 
     echo json_encode([
         'success' => true,

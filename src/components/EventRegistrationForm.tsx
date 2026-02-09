@@ -25,6 +25,7 @@ const API_BASE = import.meta.env.VITE_API_URL || '';
 export const EventRegistrationForm = ({ eventId, eventTitle, maxTeamSize }: EventRegistrationFormProps) => {
     const { toast } = useToast();
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [registrationSuccess, setRegistrationSuccess] = useState<{ id: string } | null>(null);
 
     const [formData, setFormData] = useState({
         teamName: '',
@@ -134,11 +135,19 @@ export const EventRegistrationForm = ({ eventId, eventTitle, maxTeamSize }: Even
             const data = await res.json().catch(() => ({}));
 
             if (!res.ok) {
-                toast({
-                    title: 'Registration failed',
-                    description: [data?.error, data?.detail].filter(Boolean).join(' – ') || 'Please try again.',
-                    variant: 'destructive',
-                });
+                if (res.status === 409) {
+                    toast({
+                        title: 'Already Registered',
+                        description: 'This email is already registered for this event.',
+                        variant: 'destructive',
+                    });
+                } else {
+                    toast({
+                        title: 'Registration failed',
+                        description: [data?.error, data?.detail].filter(Boolean).join(' – ') || 'Please try again.',
+                        variant: 'destructive',
+                    });
+                }
                 setIsSubmitting(false);
                 return;
             }
@@ -148,6 +157,9 @@ export const EventRegistrationForm = ({ eventId, eventTitle, maxTeamSize }: Even
                 description: `Your team "${formData.teamName}" has been registered for ${eventTitle}.`,
             });
 
+            setRegistrationSuccess({ id: data.id || 'N/A' });
+
+            // Optional: reset form data if needed for "Register Another" flow
             setFormData({
                 teamName: '',
                 leaderName: '',
@@ -167,6 +179,44 @@ export const EventRegistrationForm = ({ eventId, eventTitle, maxTeamSize }: Even
             setIsSubmitting(false);
         }
     };
+
+    if (registrationSuccess) {
+        return (
+            <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="glass neon-border rounded-3xl p-8 text-center space-y-6"
+            >
+                <div className="w-20 h-20 rounded-full bg-green-500/20 text-green-500 mx-auto flex items-center justify-center">
+                    <Send className="w-10 h-10" />
+                </div>
+
+                <h2 className="text-3xl font-display font-bold text-white">Registration Successful!</h2>
+
+                <div className="space-y-2 text-muted-foreground">
+                    <p>You have successfully registered for <span className="text-primary font-semibold">{eventTitle}</span></p>
+                    <p>Team: <span className="text-white">{formData.teamName || 'Your Team'}</span></p>
+                    <p className="text-sm">Ref ID: <span className="font-mono bg-white/10 px-2 py-1 rounded">{registrationSuccess.id}</span></p>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                    <Button
+                        variant="outline"
+                        onClick={() => window.print()}
+                        className="gap-2"
+                    >
+                        Print Receipt
+                    </Button>
+                    <Button
+                        onClick={() => setRegistrationSuccess(null)}
+                        className="gap-2 glow-cyan"
+                    >
+                        Register Another Team
+                    </Button>
+                </div>
+            </motion.div>
+        );
+    }
 
     return (
         <motion.form
