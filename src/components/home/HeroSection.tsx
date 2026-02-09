@@ -8,8 +8,7 @@ import { Link } from "react-router-dom";
 
 const stats = [
   { icon: Calendar, value: '3', label: 'Days' },
-  { icon: Users, value: '50+', label: 'Events' },
-  { icon: MapPin, value: '5000+', label: 'Attendees' },
+  { icon: Users, value: '20+', label: 'Events' },
 ];
 
 const FLIP_INTERVAL_MS = 3000;
@@ -23,7 +22,7 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-[80px] md:pt-[96px]">
       {/* Background Effects */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse" />
@@ -37,7 +36,7 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-3 px-5 py-3 rounded-full glass border border-primary/30 mb-6 flex-shrink-0"
+            className="inline-flex items-center gap-3 px-5 py-3 rounded-full glass border border-primary/30 mb-8 mt-[-50px] flex-shrink-0"
           >
             <img src="/nit-logo.png" alt="NIT Sikkim" className="h-14 w-14 sm:h-16 sm:w-16 object-contain flex-shrink-0" />
             <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
@@ -45,7 +44,7 @@ export const HeroSection = () => {
                 National Institute of Technology Sikkim
               </span>
               <span className="text-xs sm:text-sm font-body text-primary/90 font-small tracking-wider mt-0.5">
-                  An Institute of National Importance
+                An Institute of National Importance
               </span>
             </div>
           </motion.div>
@@ -58,6 +57,9 @@ export const HeroSection = () => {
             className="mb-6 min-h-[200px] sm:min-h-[220px] md:min-h-[260px] flex items-center justify-center"
             style={{ perspective: '1000px' }}
           >
+
+
+
             <motion.div
               className="relative w-full flex items-center justify-center"
               style={{ transformStyle: 'preserve-3d' }}
@@ -118,19 +120,15 @@ export const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
           >
-            <Button size="lg" className="font-display text-base glow-cyan group">
-              Register Now
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
-              <Link to="/events">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="font-display text-base border-primary/50 hover:bg-primary/10"
-                >
-                  View Events
-                </Button>
-              </Link>
+            <Link to="/events">
+              <Button
+                size="lg"
+                variant="outline"
+                className="font-display text-base border-primary/50 hover:bg-primary/10"
+              >
+                View Events
+              </Button>
+            </Link>
           </motion.div>
 
           {/* Countdown */}

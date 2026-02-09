@@ -28,13 +28,13 @@ export const Footer = () => {
   return (
     <footer className="relative border-t border-primary/20 bg-card/30">
       <div className="absolute inset-0 grid-pattern opacity-30" />
-      
+
       <div className="container mx-auto px-4 py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-3">
-              <img src="/nit-logo.png" alt="NIT Sikkim" className="h-16 w-16 sm:h-20 sm:w-20 object-contain flex-shrink-0" />
+              <img src="/abhilogo.svg" alt="Abhiyantran" className="h-16 w-16 sm:h-20 sm:w-20 object-contain flex-shrink-0" />
               <span className="font-display text-xl font-bold text-gradient">
                 ABHIYANTRAN
               </span>
