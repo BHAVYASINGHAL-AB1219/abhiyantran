@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 const stats = [
   { icon: Calendar, value: '3', label: 'Days' },
   { icon: Users, value: '20+', label: 'Events' },
+
 ];
 
 const FLIP_INTERVAL_MS = 3000;
@@ -59,7 +60,7 @@ export const HeroSection = () => {
           >
 
 
-
+            
             <motion.div
               className="relative w-full flex items-center justify-center"
               style={{ transformStyle: 'preserve-3d' }}

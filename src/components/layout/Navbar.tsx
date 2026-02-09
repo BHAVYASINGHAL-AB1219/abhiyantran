@@ -17,6 +17,7 @@ const navLinks = [
   { path: '/announcements', label: 'Announcements', icon: Megaphone },
 
 
+
 ];
 
 export const Navbar = () => {

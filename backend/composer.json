@@ -1,0 +1,6 @@
+{
+    "name": "abhiyantran/backend",
+    "require": {
+        "mongodb/mongodb": "^2.0"
+    }
+}
