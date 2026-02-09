@@ -6,7 +6,7 @@ interface TimeUnit {
   label: string;
 }
 
-const targetDate = new Date('2025-03-15T09:00:00');
+const targetDate = new Date('2026-04-04T09:00:00');
 
 export const CountdownTimer = () => {
   const [timeLeft, setTimeLeft] = useState<TimeUnit[]>([

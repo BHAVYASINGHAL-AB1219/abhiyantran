@@ -28,7 +28,7 @@ export const Footer = () => {
   return (
     <footer className="relative border-t border-primary/20 bg-card/30">
       <div className="absolute inset-0 grid-pattern opacity-30" />
-      
+
       <div className="container mx-auto px-4 py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}

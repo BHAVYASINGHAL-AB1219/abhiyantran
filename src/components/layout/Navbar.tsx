@@ -31,7 +31,7 @@ export const Navbar = () => {
       transition={{ duration: 0.5 }}
       className="fixed top-0 left-0 right-0 z-50 glass border-b border-primary/20"
     >
-      <div className="container mx-auto px-4">
+      <div className="w-full px-4 md:px-8 lg:px-12">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Left: NIT Sikkim logo + text (single line) */}
           <Link to="/" className="flex items-center gap-2 sm:gap-3 group">
@@ -40,7 +40,7 @@ export const Navbar = () => {
               alt="NIT Sikkim"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
-              className="h-10 w-10 sm:h-12 sm:w-12 object-contain"
+              className="h-[72px] w-[72px] sm:h-24 sm:w-24 object-contain"
             />
             <span className="hidden sm:inline font-display text-lg font-bold text-foreground whitespace-nowrap">
               NIT SIKKIM
@@ -106,7 +106,7 @@ export const Navbar = () => {
               alt="Abhiyantran Logo"
 
               className="h-10 w-10 object-contain"
-              whileHover={{ 
+              whileHover={{
 
                 scale: 1.1,
                 rotate: [0, -5, 5, -5, 0],
@@ -166,8 +166,8 @@ export const Navbar = () => {
                       to={link.path}
                       onClick={() => setIsOpen(false)}
                       className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${location.pathname === link.path
-                          ? 'bg-primary/20 text-primary'
-                          : 'text-foreground/70 hover:bg-muted hover:text-foreground'
+                        ? 'bg-primary/20 text-primary'
+                        : 'text-foreground/70 hover:bg-muted hover:text-foreground'
                         }`}
                     >
                       <motion.span
