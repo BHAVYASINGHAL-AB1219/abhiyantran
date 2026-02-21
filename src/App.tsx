@@ -36,6 +36,9 @@ const App = () => (
             <Route path="/events" element={<Events />} />
             <Route path="/events/:id" element={<EventDetail />} />
             <Route path="/schedule" element={<Schedule />} />
+            <Route path="/speakers" element={<ComingSoon title="Speakers" />} />
+            <Route path="/sponsors" element={<ComingSoon title="Sponsors" />} />
+            <Route path="/merch" element={<ComingSoon title="Buy Merch" />} />
             <Route path="/announcements" element={<Announcements />} />
             <Route path="/organising-team" element={<OrganisingTeam />} />
             {/* Admin Routes */}
