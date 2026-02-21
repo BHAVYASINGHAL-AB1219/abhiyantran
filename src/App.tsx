@@ -26,27 +26,6 @@ const ProtectedAdminRoute = ({ children }: { children: React.ReactNode }) => {
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-<<<<<<< HEAD
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/events/:id" element={<EventDetail />} />
-          <Route path="/schedule" element={<Schedule />} />
-          <Route path="/speakers" element={<ComingSoon title="Speakers" />} />
-          <Route path="/sponsors" element={<ComingSoon title="Sponsors" />} />
-          <Route path="/announcements" element={<Announcements />} />
-          <Route path="/organising-team" element={<OrganisingTeam />} />
-          <Route path="/merch" element={<ComingSoon title="Buy Merch" />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-=======
     <AdminAuthProvider>
       <TooltipProvider>
         <Toaster />
@@ -57,12 +36,8 @@ const App = () => (
             <Route path="/events" element={<Events />} />
             <Route path="/events/:id" element={<EventDetail />} />
             <Route path="/schedule" element={<Schedule />} />
-            <Route path="/speakers" element={<Speakers />} />
-            <Route path="/sponsors" element={<Sponsors />} />
             <Route path="/announcements" element={<Announcements />} />
             <Route path="/organising-team" element={<OrganisingTeam />} />
-            <Route path="/merch" element={<Merch />} />
-
             {/* Admin Routes */}
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route
@@ -80,7 +55,6 @@ const App = () => (
         </BrowserRouter>
       </TooltipProvider>
     </AdminAuthProvider>
->>>>>>> 4068fcb6d0139f3156e5f7d2274b44dffb86e133
   </QueryClientProvider>
 );
 
