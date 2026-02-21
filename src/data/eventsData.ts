@@ -42,7 +42,7 @@ export const events: EventData[] = [
         team: '2-4 members',
         venue: 'Robotics Arena',
         prize: '₹30,000',
-        image: 'https://images.unsplash.com/photo-1561557944-6e7860b7b1e2?w=400&h=300&fit=crop',
+        image: 'https://png.pngtree.com/thumb_back/fw800/background/20230416/pngtree-robot-battle-war-background-image_2412125.jpg',
         maxTeamSize: 4,
         rules: [
             'Robot weight must not exceed 15kg.',
@@ -202,7 +202,7 @@ export const events: EventData[] = [
         team: '2-4 Member',
         venue: 'Announce Later',
         prize: '₹20,000',
-        image: 'https://upload.wikimedia.org/wikipedia/commons/4/4c/40365_Line_Follower_Robot.jpg',
+        image: 'https://hackster.imgix.net/uploads/attachments/1196200/line_follower_robot_using_arduino_l298_motor_driver_and_ir_sensor_rbsPmUjP1z.jpg',
         maxTeamSize: 4,
         rules: [
             'Robot must be fully autonomous.',
@@ -262,7 +262,7 @@ export const events: EventData[] = [
         team: 'Team of 2–4 Members',
         venue: 'Announced Later',
         prize: '₹5,000',
-        image: 'https://images.unsplash.com/photo-1598223631980-60b6b0808381?w=400&h=300&fit=crop',
+        image: 'https://lavocedinewyork.com/wp-content/uploads/2022/02/brooklyn_bridge_manhattan-1140x815.jpg',
         maxTeamSize: 4,
         rules: [
             'Materials will be provided (popsicle sticks, glue).',
@@ -282,7 +282,7 @@ export const events: EventData[] = [
         team: 'Individual Participation',
         venue: 'Announced Later',
         prize: '₹10,000',
-        image: 'https://images.unsplash.com/photo-1590059902640-c322b7d2f9d6?w=400&h=300&fit=crop',
+        image: 'https://enventure.com/wp-content/uploads/2019/11/Importance.png',
         maxTeamSize: 1,
         rules: [
             'Individual participation only.',
@@ -333,26 +333,26 @@ export const events: EventData[] = [
             'Judging based on practicality and sustainability.',
         ],
     },
-    {
-        id: 27,
-        title: 'JAM (Just A Minute)',
-        category: 'Non-Technical',
-        description: 'Speak on a given topic for one minute to test confidence, spontaneity, and communication skills.',
-        duration: '1–2 Hours (Depending on Rounds)',
-        team: 'Individual Participation',
-        venue: 'Announced Later',
-        prize: 'Trophy + Gifts',
-        image: 'https://images.unsplash.com/photo-1478737270239-2f52b06c6c22?w=400&h=300&fit=crop',
-        maxTeamSize: 1,
-        rules: [
-            'Individual participation only.',
-            'Speak for 60 seconds without hesitation, repetition, or deviation.',
-            'Topic given on the spot.',
-            'No preparation time.',
-            'Multiple elimination rounds.',
-            'Judges decision is final.',
-        ],
-    },
+    // {
+    //     id: 27,
+    //     title: 'JAM (Just A Minute)',
+    //     category: 'Non-Technical',
+    //     description: 'Speak on a given topic for one minute to test confidence, spontaneity, and communication skills.',
+    //     duration: '1–2 Hours (Depending on Rounds)',
+    //     team: 'Individual Participation',
+    //     venue: 'Announced Later',
+    //     prize: 'Trophy + Gifts',
+    //     image: 'https://images.unsplash.com/photo-1478737270239-2f52b06c6c22?w=400&h=300&fit=crop',
+    //     maxTeamSize: 1,
+    //     rules: [
+    //         'Individual participation only.',
+    //         'Speak for 60 seconds without hesitation, repetition, or deviation.',
+    //         'Topic given on the spot.',
+    //         'No preparation time.',
+    //         'Multiple elimination rounds.',
+    //         'Judges decision is final.',
+    //     ],
+    // },
 ];
 
 export const categories = ['All', 'Technical', 'Non-Technical', 'Workshop'];
