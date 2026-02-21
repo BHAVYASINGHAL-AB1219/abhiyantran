@@ -13,7 +13,7 @@ const navLinks = [
   { path: '/speakers', label: 'Speakers', icon: Users },
   { path: '/sponsors', label: 'Sponsors', icon: Handshake },
   { path: '/merch', label: 'Buy Merch', icon: ShoppingBag },
-  { path: '/organising-team', label: 'Organising Team', icon: UsersRound },
+  // { path: '/organising-team', label: 'Organising Team', icon: UsersRound },
   { path: '/announcements', label: 'Announcements', icon: Megaphone },
 
 

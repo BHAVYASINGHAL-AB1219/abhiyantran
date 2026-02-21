@@ -18,9 +18,9 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Instagram, href: '#', label: 'Instagram' },
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
+  { icon: Twitter, href: 'https://x.com/abhiyantran', label: 'Twitter' },
+  { icon: Instagram, href: 'https://www.instagram.com/abhiyantran', label: 'Instagram' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/company/abhiyantran-nit-sikkim/?originalSubdomain=in', label: 'LinkedIn' },
   { icon: Github, href: '#', label: 'GitHub' },
 ];
 
