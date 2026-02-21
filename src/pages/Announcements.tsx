@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Layout } from '@/components/layout/Layout';
 import { Bell, Pin, Calendar, AlertCircle, Info, CheckCircle, Loader2 } from 'lucide-react';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation } from '@tanstack/react-query';
+import { useToast } from '@/hooks/use-toast';
 
 const API_URL = 'http://localhost:8000';
 
@@ -13,6 +15,9 @@ const typeConfig: Record<string, { icon: typeof AlertCircle; color: string; bg: 
 };
 
 const Announcements = () => {
+  const [email, setEmail] = useState('');
+  const { toast } = useToast();
+
   const { data: announcements = [], isLoading } = useQuery({
     queryKey: ['publicAnnouncements'],
     queryFn: async () => {
@@ -22,6 +27,32 @@ const Announcements = () => {
       return data.data;
     }
   });
+
+  const subscribeMutation = useMutation({
+    mutationFn: async (email: string) => {
+      const res = await fetch(`${API_URL}/subscribe.php`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.error);
+      return data;
+    },
+    onSuccess: () => {
+      toast({ title: 'Success', description: 'You have been subscribed to updates!' });
+      setEmail('');
+    },
+    onError: (error: any) => {
+      toast({ title: 'Error', description: error.message, variant: 'destructive' });
+    }
+  });
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    subscribeMutation.mutate(email);
+  };
 
   const pinnedAnnouncements = announcements.filter((a: any) => a.pinned);
   const regularAnnouncements = announcements.filter((a: any) => !a.pinned);
@@ -60,8 +91,8 @@ const Announcements = () => {
                       <span className="font-display text-sm text-primary uppercase tracking-wider">Pinned</span>
                     </div>
                     <div className="space-y-4">
-                      {pinnedAnnouncements.map((announcement, index) => {
-                        const config = typeConfig[announcement.type];
+                      {pinnedAnnouncements.map((announcement: any, index: number) => {
+                        const config = typeConfig[announcement.type] || typeConfig['info'];
                         return (
                           <motion.div
                             key={announcement.id}
@@ -105,8 +136,8 @@ const Announcements = () => {
                     <span className="font-display text-sm text-muted-foreground uppercase tracking-wider">Recent Updates</span>
                   </div>
                   <div className="space-y-4">
-                    {regularAnnouncements.map((announcement, index) => {
-                      const config = typeConfig[announcement.type];
+                    {regularAnnouncements.map((announcement: any, index: number) => {
+                      const config = typeConfig[announcement.type] || typeConfig['info'];
                       return (
                         <motion.div
                           key={announcement.id}
@@ -148,20 +179,25 @@ const Announcements = () => {
                     <p className="text-muted-foreground text-sm mb-6 max-w-md mx-auto">
                       Subscribe to our newsletter to receive the latest announcements directly in your inbox.
                     </p>
-                    <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                    <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
                       <input
                         type="email"
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter your email"
                         className="flex-1 px-4 py-3 rounded-lg bg-muted border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-sm"
                       />
                       <motion.button
+                        type="submit"
+                        disabled={subscribeMutation.isPending}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        className="px-6 py-3 rounded-lg bg-primary text-primary-foreground font-display font-medium glow-cyan"
+                        className="px-6 py-3 rounded-lg bg-primary text-primary-foreground font-display font-medium glow-cyan disabled:opacity-50"
                       >
-                        Subscribe
+                        {subscribeMutation.isPending ? 'Subscribing...' : 'Subscribe'}
                       </motion.button>
-                    </div>
+                    </form>
                   </div>
                 </motion.div>
               </>

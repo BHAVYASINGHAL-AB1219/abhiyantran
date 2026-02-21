@@ -4,13 +4,14 @@ import { useAdminAuth } from '@/contexts/AdminAuthContext';
 import { Layout } from '@/components/layout/Layout';
 import { AnnouncementsManager } from '@/components/admin/AnnouncementsManager';
 import { RegistrationsViewer } from '@/components/admin/RegistrationsViewer';
-import { LogOut, Megaphone, Users } from 'lucide-react';
+import { SubscribersViewer } from '@/components/admin/SubscribersViewer';
+import { LogOut, Megaphone, Users, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const AdminDashboard = () => {
     const { logout } = useAdminAuth();
     const navigate = useNavigate();
-    const [activeTab, setActiveTab] = useState<'announcements' | 'registrations'>('announcements');
+    const [activeTab, setActiveTab] = useState<'announcements' | 'registrations' | 'subscribers'>('announcements');
 
     const handleLogout = () => {
         logout();
@@ -34,8 +35,8 @@ const AdminDashboard = () => {
                                 <button
                                     onClick={() => setActiveTab('announcements')}
                                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${activeTab === 'announcements'
-                                            ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/25'
-                                            : 'hover:bg-white/5 text-muted-foreground hover:text-foreground'
+                                        ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/25'
+                                        : 'hover:bg-white/5 text-muted-foreground hover:text-foreground'
                                         }`}
                                 >
                                     <Megaphone className="w-4 h-4" /> Announcements
@@ -43,11 +44,20 @@ const AdminDashboard = () => {
                                 <button
                                     onClick={() => setActiveTab('registrations')}
                                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${activeTab === 'registrations'
-                                            ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/25'
-                                            : 'hover:bg-white/5 text-muted-foreground hover:text-foreground'
+                                        ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/25'
+                                        : 'hover:bg-white/5 text-muted-foreground hover:text-foreground'
                                         }`}
                                 >
                                     <Users className="w-4 h-4" /> Registrations
+                                </button>
+                                <button
+                                    onClick={() => setActiveTab('subscribers')}
+                                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${activeTab === 'subscribers'
+                                        ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/25'
+                                        : 'hover:bg-white/5 text-muted-foreground hover:text-foreground'
+                                        }`}
+                                >
+                                    <Mail className="w-4 h-4" /> Subscribers
                                 </button>
                             </nav>
 
@@ -70,7 +80,9 @@ const AdminDashboard = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.2 }}
                         >
-                            {activeTab === 'announcements' ? <AnnouncementsManager /> : <RegistrationsViewer />}
+                            {activeTab === 'announcements' && <AnnouncementsManager />}
+                            {activeTab === 'registrations' && <RegistrationsViewer />}
+                            {activeTab === 'subscribers' && <SubscribersViewer />}
                         </motion.div>
                     </div>
 
