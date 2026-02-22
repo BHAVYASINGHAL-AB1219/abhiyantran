@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ComingSoon from "./ComingSoon";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { MapPin, User, Plane } from "lucide-react";
@@ -73,9 +74,8 @@ const Schedule = () => {
               <button
                 key={day.id}
                 onClick={() => setSelectedDay(day.id)}
-                className={`px-6 py-4 rounded-xl font-display ${
-                  selectedDay === day.id ? "glass neon-border glow-cyan" : "glass-hover"
-                }`}
+                className={`px-6 py-4 rounded-xl font-display ${selectedDay === day.id ? "glass neon-border glow-cyan" : "glass-hover"
+                  }`}
               >
                 <span className={`block text-lg font-bold ${selectedDay === day.id ? "text-primary" : ""}`}>
                   {day.label}
@@ -134,4 +134,10 @@ const Schedule = () => {
   );
 };
 
-export default Schedule;
+// Original Schedule component is preserved above for future use.
+
+const ScheduleWrapper = () => {
+  return <ComingSoon title="Schedule" />;
+};
+
+export default ScheduleWrapper;
