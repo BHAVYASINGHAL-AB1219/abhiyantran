@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useAdminAuth } from '@/contexts/AdminAuthContext';
 import { Loader2, Download } from 'lucide-react';
 
-const API_URL = 'http://localhost:8000';
+const API_URL = '/api';
 
 export const RegistrationsViewer = () => {
     const { token } = useAdminAuth();

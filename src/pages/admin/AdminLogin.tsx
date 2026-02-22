@@ -22,7 +22,7 @@ const AdminLogin = () => {
 
         setLoading(true);
         try {
-            const response = await fetch('http://localhost:8000/admin_login.php', {
+            const response = await fetch('/api/admin_login.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ password }),

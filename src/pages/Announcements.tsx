@@ -5,7 +5,7 @@ import { Bell, Pin, Calendar, AlertCircle, Info, CheckCircle, Loader2 } from 'lu
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { useToast } from '@/hooks/use-toast';
 
-const API_URL = 'http://localhost:8000';
+const API_URL = '/api';
 
 const typeConfig: Record<string, { icon: typeof AlertCircle; color: string; bg: string }> = {
   important: { icon: AlertCircle, color: 'text-red-400', bg: 'bg-red-500/20' },

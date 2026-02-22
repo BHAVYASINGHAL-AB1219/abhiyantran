@@ -5,7 +5,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Plus, Trash2, Edit, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const API_URL = 'http://localhost:8000';
+const API_URL = '/api';
 
 export const AnnouncementsManager = () => {
     const { token } = useAdminAuth();
@@ -120,8 +120,8 @@ export const AnnouncementsManager = () => {
                                 <h3 className="font-semibold">{announcement.title}</h3>
                                 {announcement.pinned && <span className="text-xs bg-primary/20 text-primary px-2 py-0.5 rounded-full">Pinned</span>}
                                 <span className={`text-xs px-2 py-0.5 rounded-full ${announcement.type === 'important' ? 'bg-red-500/20 text-red-500' :
-                                        announcement.type === 'success' ? 'bg-green-500/20 text-green-500' :
-                                            'bg-blue-500/20 text-blue-500'
+                                    announcement.type === 'success' ? 'bg-green-500/20 text-green-500' :
+                                        'bg-blue-500/20 text-blue-500'
                                     }`}>
                                     {announcement.type}
                                 </span>
