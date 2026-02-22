@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AdminAuthProvider, useAdminAuth } from "./contexts/AdminAuthContext";
 import Index from "./pages/Index";
 import Events from "./pages/Events";
-// import Schedule from "./pages/Schedule"; // Temporarily replaced by ComingSoon
+import Schedule from "./pages/Schedule";
 import ComingSoon from "./pages/ComingSoon";
 import Announcements from "./pages/Announcements";
 import OrganisingTeam from "./pages/OrganisingTeam";
@@ -35,7 +35,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/events" element={<Events />} />
             <Route path="/events/:id" element={<EventDetail />} />
-            <Route path="/schedule" element={<ComingSoon title="Schedule" />} />
+            <Route path="/schedule" element={<Schedule />} />
             <Route path="/speakers" element={<ComingSoon title="Speakers" />} />
             <Route path="/sponsors" element={<ComingSoon title="Sponsors" />} />
             <Route path="/merch" element={<ComingSoon title="Buy Merch" />} />
