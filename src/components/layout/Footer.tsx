@@ -102,17 +102,17 @@ export const Footer = () => {
                 <Mail className="w-4 h-4 text-primary" />
                 <span>abhiyantran@nitsikkim.ac.in</span>
               </li>
-              <li className="flex items-center gap-3 text-sm text-muted-foreground">
+              {/* <li className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Phone className="w-4 h-4 text-primary" />
                 <span>+91 (03595) 260 000</span>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
 
         <div className="mt-12 pt-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2025 NIT Sikkim - ABHIYANTRAN. All rights reserved.
+            © 2026 NIT Sikkim - ABHIYANTRAN. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-muted-foreground">
             <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>

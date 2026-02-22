@@ -4,27 +4,31 @@ import { Link } from 'react-router-dom';
 
 const events = [
   {
+    id: 2,
     icon: Code,
     title: 'Hackathon',
     description: '24-hour coding marathon with amazing prizes',
     color: 'from-primary to-neon-blue',
   },
   {
+    id: 9,
     icon: Trophy,
     title: 'Robo War',
     description: 'Battle of bots! Build and compete with your robot in an intense arena combat.',
     color: 'from-secondary to-neon-purple',
   },
   {
+    id: 10,
     icon: Lightbulb,
     title: 'Drone Racing Championship',
     description: 'High-speed FPV drone racing through challenging obstacle courses.',
     color: 'from-neon-purple to-primary',
   },
   {
+    id: 15,
     icon: Gamepad2,
-    title: 'Technical Treasure Hunt',
-    description: 'Solve technical puzzles and clues to find hidden treasures across the campus.',
+    title: 'CircuitForge',
+    description: 'Analog and digital electronics challenge. Design and implement circuits to solve given problems',
     color: 'from-neon-blue to-secondary',
   },
 ];
@@ -76,10 +80,10 @@ export const FeaturedEvents = () => {
                 </p>
 
                 {/* Link */}
-                <div className="flex items-center text-primary text-sm font-medium group-hover:gap-2 transition-all">
+                <Link to={`/events/${event.id}`} className="flex items-center text-primary text-sm font-medium group-hover:gap-2 transition-all">
                   <span>Learn More</span>
                   <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
+                </Link>
               </div>
 
               {/* Glow Effect */}
