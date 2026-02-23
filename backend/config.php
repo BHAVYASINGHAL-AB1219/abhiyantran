@@ -34,3 +34,20 @@ function getDbName() {
     $db = getenv('MONGODB_DB');
     return $db !== false && $db !== '' ? $db : 'abhiyantran';
 }
+
+function getResendApiKey() {
+    $key = getenv('RESEND_API_KEY');
+    if ($key === false || $key === '') {
+        http_response_code(500);
+        header('Content-Type: application/json');
+        echo json_encode(['success' => false, 'error' => 'RESEND_API_KEY not configured']);
+        exit;
+    }
+    return $key;
+}
+
+function getResendFrom() {
+    $from = getenv('RESEND_FROM');
+    return ($from !== false && $from !== '') ? $from : 'ABHIYANTRAN 2026 <noreply@abhiyantran.in>';
+}
+
