@@ -368,7 +368,7 @@ export const events: EventData[] = [
         team: '2-4 members',
         venue: 'Announced Later',
         prize: '₹30,000',
-        image: '/exoskeleton-emg.jpg',
+        image: '/exoskeleton-emg.png',
         maxTeamSize: 4,
         rules: [
             'Objective: Develop an EMG-controlled exoskeleton arm that augments human lifting strength.',
