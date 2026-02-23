@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone, Twitter, Instagram, Linkedin, Github } from 'lucide-react';
+import { Mail, MapPin, Phone, Instagram, Linkedin, Github } from 'lucide-react';
 
 const footerLinks = {
   quickLinks: [
@@ -18,9 +18,8 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { icon: Twitter, href: 'https://x.com/abhiyantran', label: 'Twitter' },
   { icon: Instagram, href: 'https://www.instagram.com/abhiyantran', label: 'Instagram' },
-  { icon: Linkedin, href: 'https://www.linkedin.com/company/abhiyantran-nit-sikkim/?originalSubdomain=in', label: 'LinkedIn' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/abhiyantran-nitsikkim/', label: 'LinkedIn' },
   { icon: Github, href: '#', label: 'GitHub' },
 ];
 
