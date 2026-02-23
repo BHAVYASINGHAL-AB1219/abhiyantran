@@ -75,6 +75,10 @@
 
   html {
     scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
@@ -84,6 +88,16 @@
       radial-gradient(ellipse at 80% 80%, hsl(300 100% 60% / 0.03) 0%, transparent 50%),
       linear-gradient(180deg, hsl(240 20% 4%) 0%, hsl(240 15% 6%) 100%);
     background-attachment: fixed;
+    transform: translateZ(0);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Disable fixed background on mobile — causes severe scroll jank on iOS/Android */
+  @media (max-width: 768px) {
+    body {
+      background-attachment: scroll;
+    }
   }
 }
 
@@ -138,15 +152,18 @@
 
   .animate-float {
     animation: float 6s ease-in-out infinite;
+    will-change: transform;
   }
 
   .animate-pulse-glow {
     animation: pulse-glow 2s ease-in-out infinite;
+    will-change: box-shadow;
   }
 
   .animate-gradient {
     background-size: 200% 200%;
     animation: gradient-shift 8s ease infinite;
+    will-change: background-position;
   }
 
   @keyframes float {
