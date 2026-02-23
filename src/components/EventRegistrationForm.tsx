@@ -1,10 +1,10 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { UserPlus, Trash2, Send, Users, Mail, RefreshCw, ShieldCheck } from 'lucide-react';
+import { UserPlus, Trash2, Send, Users } from 'lucide-react';
 
 interface TeamMember {
     name: string;
@@ -22,15 +22,10 @@ const years = ['1st Year', '2nd Year', '3rd Year', '4th Year', '5th Year'];
 
 const API_BASE = import.meta.env.VITE_API_URL || '';
 
-type FormStep = 'form' | 'otp' | 'success';
-
 export const EventRegistrationForm = ({ eventId, eventTitle, maxTeamSize }: EventRegistrationFormProps) => {
     const { toast } = useToast();
-
-    const [step, setStep] = useState<FormStep>('form');
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [isOtpSending, setIsOtpSending] = useState(false);
-    const [registrationId, setRegistrationId] = useState<string>('');
+    const [registrationSuccess, setRegistrationSuccess] = useState<{ id: string } | null>(null);
 
     const [formData, setFormData] = useState({
         teamName: '',
@@ -44,12 +39,13 @@ export const EventRegistrationForm = ({ eventId, eventTitle, maxTeamSize }: Even
     const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
     const [errors, setErrors] = useState<Record<string, string>>({});
 
-    // OTP state – 6 individual digit inputs
-    const [otpDigits, setOtpDigits] = useState<string[]>(['', '', '', '', '', '']);
-    const otpRefs = useRef<(HTMLInputElement | null)[]>([]);
+    const validateEmail = (email: string) => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    };
 
-    const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    const validatePhone = (phone: string) => /^\d{10}$/.test(phone);
+    const validatePhone = (phone: string) => {
+        return /^\d{10}$/.test(phone);
+    };
 
     const addTeamMember = () => {
         if (teamMembers.length < maxTeamSize - 1) {
@@ -103,74 +99,14 @@ export const EventRegistrationForm = ({ eventId, eventTitle, maxTeamSize }: Even
         return Object.keys(newErrors).length === 0;
     };
 
-    // ── Step 1: Send OTP ────────────────────────────────────────────────────────
-    const handleSendOtp = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         if (!validateForm()) {
             toast({
-                title: 'Validation Error',
-                description: 'Please fill all required fields correctly.',
-                variant: 'destructive',
-            });
-            return;
-        }
-
-        setIsOtpSending(true);
-
-        try {
-            const url = API_BASE
-                ? `${API_BASE.replace(/\/$/, '')}/send_otp.php`
-                : '/api/send_otp.php';
-
-            const res = await fetch(url, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    email: formData.leaderEmail,
-                    eventId,
-                    eventTitle,
-                    teamName: formData.teamName,
-                    leaderName: formData.leaderName,
-                }),
-            });
-
-            const data = await res.json().catch(() => ({}));
-
-            if (!res.ok) {
-                toast({
-                    title: 'Failed to send OTP',
-                    description: data?.error || data?.detail || 'Please try again.',
-                    variant: 'destructive',
-                });
-                return;
-            }
-
-            toast({
-                title: '📧 OTP Sent!',
-                description: `A 6-digit OTP has been sent to ${formData.leaderEmail}`,
-            });
-            setOtpDigits(['', '', '', '', '', '']);
-            setStep('otp');
-        } catch {
-            toast({
-                title: 'Network error',
-                description: 'Could not reach the server. Please try again.',
-                variant: 'destructive',
-            });
-        } finally {
-            setIsOtpSending(false);
-        }
-    };
-
-    // ── Step 2: Verify OTP & Submit registration ────────────────────────────────
-    const handleVerifyAndRegister = async () => {
-        const otp = otpDigits.join('');
-        if (otp.length !== 6) {
-            toast({
-                title: 'Invalid OTP',
-                description: 'Please enter all 6 digits.',
-                variant: 'destructive',
+                title: "Validation Error",
+                description: "Please fill all required fields correctly.",
+                variant: "destructive",
             });
             return;
         }
@@ -178,7 +114,6 @@ export const EventRegistrationForm = ({ eventId, eventTitle, maxTeamSize }: Even
         setIsSubmitting(true);
 
         const payload = {
-            otp,
             eventId,
             eventTitle,
             teamName: formData.teamName,
@@ -191,26 +126,16 @@ export const EventRegistrationForm = ({ eventId, eventTitle, maxTeamSize }: Even
         };
 
         try {
-            const url = API_BASE
-                ? `${API_BASE.replace(/\/$/, '')}/verify_otp.php`
-                : '/api/verify_otp.php';
-
+            const url = API_BASE ? `${API_BASE.replace(/\/$/, '')}/register.php` : '/api/register.php';
             const res = await fetch(url, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload),
             });
-
             const data = await res.json().catch(() => ({}));
 
             if (!res.ok) {
-                if (res.status === 401) {
-                    toast({
-                        title: 'Invalid or Expired OTP',
-                        description: 'Please request a new OTP and try again.',
-                        variant: 'destructive',
-                    });
-                } else if (res.status === 409) {
+                if (res.status === 409) {
                     toast({
                         title: 'Already Registered',
                         description: 'This email is already registered for this event.',
@@ -223,19 +148,31 @@ export const EventRegistrationForm = ({ eventId, eventTitle, maxTeamSize }: Even
                         variant: 'destructive',
                     });
                 }
+                setIsSubmitting(false);
                 return;
             }
 
             toast({
-                title: 'Registration Successful! 🎉',
-                description: `Team "${formData.teamName}" is registered for ${eventTitle}.`,
+                title: "Registration Successful! 🎉",
+                description: `Your team "${formData.teamName}" has been registered for ${eventTitle}.`,
             });
-            setRegistrationId(data.id || 'N/A');
-            setStep('success');
+
+            setRegistrationSuccess({ id: data.id || 'N/A' });
+
+            // Optional: reset form data if needed for "Register Another" flow
+            setFormData({
+                teamName: '',
+                leaderName: '',
+                leaderEmail: '',
+                leaderPhone: '',
+                collegeName: '',
+                year: '',
+            });
+            setTeamMembers([]);
         } catch {
             toast({
-                title: 'Network error',
-                description: 'Could not reach the server. Please try again.',
+                title: 'Registration failed',
+                description: 'Network error. Please try again.',
                 variant: 'destructive',
             });
         } finally {
@@ -243,48 +180,7 @@ export const EventRegistrationForm = ({ eventId, eventTitle, maxTeamSize }: Even
         }
     };
 
-    // ── OTP digit input handler ─────────────────────────────────────────────────
-    const handleOtpChange = (index: number, value: string) => {
-        const digit = value.replace(/\D/g, '').slice(-1);
-        const updated = [...otpDigits];
-        updated[index] = digit;
-        setOtpDigits(updated);
-        if (digit && index < 5) {
-            otpRefs.current[index + 1]?.focus();
-        }
-    };
-
-    const handleOtpKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Backspace' && !otpDigits[index] && index > 0) {
-            otpRefs.current[index - 1]?.focus();
-        }
-    };
-
-    const handleOtpPaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
-        e.preventDefault();
-        const pasted = e.clipboardData.getData('text').replace(/\D/g, '').slice(0, 6);
-        if (pasted.length) {
-            const updated = [...otpDigits];
-            pasted.split('').forEach((ch, i) => { updated[i] = ch; });
-            setOtpDigits(updated);
-            otpRefs.current[Math.min(pasted.length, 5)]?.focus();
-        }
-    };
-
-    // ── Reset helper ────────────────────────────────────────────────────────────
-    const resetAll = () => {
-        setStep('form');
-        setRegistrationId('');
-        setFormData({ teamName: '', leaderName: '', leaderEmail: '', leaderPhone: '', collegeName: '', year: '' });
-        setTeamMembers([]);
-        setOtpDigits(['', '', '', '', '', '']);
-        setErrors({});
-    };
-
-    // ═══════════════════════════════════════════════════════════════════════════
-    // SUCCESS SCREEN
-    // ═══════════════════════════════════════════════════════════════════════════
-    if (step === 'success') {
+    if (registrationSuccess) {
         return (
             <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -299,15 +195,22 @@ export const EventRegistrationForm = ({ eventId, eventTitle, maxTeamSize }: Even
 
                 <div className="space-y-2 text-muted-foreground">
                     <p>You have successfully registered for <span className="text-primary font-semibold">{eventTitle}</span></p>
-                    <p>Team: <span className="text-white">{formData.teamName}</span></p>
-                    <p className="text-sm">Ref ID: <span className="font-mono bg-white/10 px-2 py-1 rounded">{registrationId}</span></p>
+                    <p>Team: <span className="text-white">{formData.teamName || 'Your Team'}</span></p>
+                    <p className="text-sm">Ref ID: <span className="font-mono bg-white/10 px-2 py-1 rounded">{registrationSuccess.id}</span></p>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                    <Button variant="outline" onClick={() => window.print()} className="gap-2">
+                    <Button
+                        variant="outline"
+                        onClick={() => window.print()}
+                        className="gap-2"
+                    >
                         Print Receipt
                     </Button>
-                    <Button onClick={resetAll} className="gap-2 glow-cyan">
+                    <Button
+                        onClick={() => setRegistrationSuccess(null)}
+                        className="gap-2 glow-cyan"
+                    >
                         Register Another Team
                     </Button>
                 </div>
@@ -315,113 +218,12 @@ export const EventRegistrationForm = ({ eventId, eventTitle, maxTeamSize }: Even
         );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════════
-    // OTP STEP
-    // ═══════════════════════════════════════════════════════════════════════════
-    if (step === 'otp') {
-        return (
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="glass neon-border rounded-3xl p-6 md:p-8"
-            >
-                {/* Header */}
-                <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                        <ShieldCheck className="w-5 h-5 text-background" />
-                    </div>
-                    <div>
-                        <h2 className="font-display text-xl font-bold">Verify Your Email</h2>
-                        <p className="text-sm text-muted-foreground">OTP sent to <span className="text-primary">{formData.leaderEmail}</span></p>
-                    </div>
-                </div>
-
-                <p className="text-muted-foreground text-sm mb-8">
-                    Enter the 6-digit OTP sent to your email to complete registration for <span className="text-white font-semibold">{eventTitle}</span>.
-                </p>
-
-                {/* 6-digit OTP input boxes */}
-                <div className="flex gap-3 justify-center mb-8">
-                    {otpDigits.map((digit, i) => (
-                        <motion.input
-                            key={i}
-                            ref={(el) => { otpRefs.current[i] = el; }}
-                            type="text"
-                            inputMode="numeric"
-                            maxLength={1}
-                            value={digit}
-                            onChange={(e) => handleOtpChange(i, e.target.value)}
-                            onKeyDown={(e) => handleOtpKeyDown(i, e)}
-                            onPaste={i === 0 ? handleOtpPaste : undefined}
-                            whileFocus={{ scale: 1.08 }}
-                            className={`
-                                w-12 h-14 text-center text-2xl font-display font-bold
-                                bg-card border-2 rounded-lg outline-none
-                                text-primary transition-all duration-200
-                                ${digit ? 'border-primary shadow-[0_0_12px_hsl(180_100%_50%/0.4)]' : 'border-border'}
-                                focus:border-primary focus:shadow-[0_0_12px_hsl(180_100%_50%/0.4)]
-                            `}
-                        />
-                    ))}
-                </div>
-
-                {/* Verify button */}
-                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="mb-4">
-                    <Button
-                        onClick={handleVerifyAndRegister}
-                        disabled={isSubmitting || otpDigits.join('').length !== 6}
-                        className="w-full py-6 text-lg font-display font-semibold glow-cyan"
-                    >
-                        {isSubmitting ? (
-                            <span className="flex items-center gap-2">
-                                <motion.span
-                                    animate={{ rotate: 360 }}
-                                    transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                                    className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
-                                />
-                                Verifying...
-                            </span>
-                        ) : (
-                            <span className="flex items-center gap-2">
-                                <ShieldCheck className="w-5 h-5" />
-                                Verify &amp; Complete Registration
-                            </span>
-                        )}
-                    </Button>
-                </motion.div>
-
-                {/* Resend + Back links */}
-                <div className="flex items-center justify-between text-sm">
-                    <button
-                        type="button"
-                        onClick={() => setStep('form')}
-                        className="text-muted-foreground hover:text-white transition-colors"
-                    >
-                        ← Edit Details
-                    </button>
-                    <button
-                        type="button"
-                        onClick={handleSendOtp as unknown as React.MouseEventHandler}
-                        disabled={isOtpSending}
-                        className="flex items-center gap-1 text-primary hover:text-primary/80 transition-colors disabled:opacity-50"
-                    >
-                        <RefreshCw className="w-3 h-3" />
-                        {isOtpSending ? 'Sending...' : 'Resend OTP'}
-                    </button>
-                </div>
-            </motion.div>
-        );
-    }
-
-    // ═══════════════════════════════════════════════════════════════════════════
-    // MAIN FORM (Step 1)
-    // ═══════════════════════════════════════════════════════════════════════════
     return (
         <motion.form
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            onSubmit={handleSendOtp}
+            onSubmit={handleSubmit}
             className="glass neon-border rounded-3xl p-6 md:p-8"
         >
             <div className="flex items-center gap-3 mb-6">
@@ -616,26 +418,29 @@ export const EventRegistrationForm = ({ eventId, eventTitle, maxTeamSize }: Even
                     </div>
                 )}
 
-                {/* Submit → Send OTP */}
-                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                {/* Submit Button */}
+                <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                >
                     <Button
                         type="submit"
-                        disabled={isOtpSending}
+                        disabled={isSubmitting}
                         className="w-full py-6 text-lg font-display font-semibold glow-cyan"
                     >
-                        {isOtpSending ? (
+                        {isSubmitting ? (
                             <span className="flex items-center gap-2">
                                 <motion.span
                                     animate={{ rotate: 360 }}
                                     transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
                                     className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
                                 />
-                                Sending OTP...
+                                Submitting...
                             </span>
                         ) : (
                             <span className="flex items-center gap-2">
-                                <Mail className="w-5 h-5" />
-                                Send OTP to Email
+                                <Send className="w-5 h-5" />
+                                Register for {eventTitle}
                             </span>
                         )}
                     </Button>
