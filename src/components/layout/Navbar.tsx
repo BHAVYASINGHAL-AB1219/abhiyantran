@@ -35,12 +35,21 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Left: NIT Sikkim logo + text (single line) */}
           <Link to="/" className="flex items-center gap-2 sm:gap-3 group">
+            {/* Mobile: Abhiyantran logo */}
+            <motion.img
+              src="/abhilogo.svg"
+              alt="Abhiyantran"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+              className="h-[52px] w-[52px] object-contain sm:hidden"
+            />
+            {/* sm+: NIT Sikkim logo */}
             <motion.img
               src="/nit-logo.png"
               alt="NIT Sikkim"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
-              className="h-[72px] w-[72px] sm:h-24 sm:w-24 object-contain"
+              className="hidden sm:block h-24 w-24 object-contain"
             />
             <span className="hidden sm:inline font-display text-lg font-bold text-foreground whitespace-nowrap">
               NIT SIKKIM
