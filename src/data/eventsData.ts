@@ -359,6 +359,33 @@ export const events: EventData[] = [
     //         'Judges decision is final.',
     //     ],
     // },
+    {
+        id: 27,
+        title: 'Exoskeleton Electromyography Arm',
+        category: 'Technical',
+        description: 'Develop an EMG-controlled exoskeleton arm that augments human lifting strength using muscle signals — and compete to lift the maximum weight.',
+        duration: 'Will Be Updated Soon',
+        team: '2-4 members',
+        venue: 'Announced Later',
+        prize: '₹30,000',
+        image: '/exoskeleton-emg.jpg',
+        maxTeamSize: 4,
+        rules: [
+            'Objective: Develop an EMG-controlled exoskeleton arm that augments human lifting strength.',
+            'Control System: The arm must be powered by Electromyography (EMG) sensors reading the user\'s muscle signals.',
+            'Design: The exoskeleton must be wearable, portable, and fit securely over the participant\'s arm.',
+            'Power Source: Must be battery-operated; no external tethering to wall outlets is allowed.',
+            'Safety Lock: All designs must include an emergency "kill switch" to instantly cut power.',
+            'Range of Motion: The device must allow for a minimum of 90 degrees of elbow flexion while under load.',
+            'Selection Criteria: The winning team is determined by the maximum weight (kg) successfully lifted.',
+            'Weight Hold: The lifted weight must be held steady for at least 5 seconds to qualify.',
+            'Structural Integrity: Any sign of the exoskeleton bending, breaking, or slipping results in a "no-lift".',
+            'Weight Class: Teams must specify the "Empty Weight" of their suit for tie-breaking purposes.',
+            'Tie-Breaker: In case of a weight tie, the team with the lighter exoskeleton wins.',
+            'Tech Inspection: A mandatory safety check is required to ensure no risk of joint over-extension or skin pinching.',
+            'Participant Safety: The wearer must wear closed-toe shoes and safety glasses during the lift attempt.',
+        ],
+    },
 ];
 
 export const categories = ['All', 'Technical', 'Non-Technical', 'Workshop'];
