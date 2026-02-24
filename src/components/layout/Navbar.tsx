@@ -12,12 +12,9 @@ const navLinks = [
   { path: '/schedule', label: 'Schedule', icon: CalendarDays },
   { path: '/speakers', label: 'Speakers', icon: Users },
   { path: '/sponsors', label: 'Sponsors', icon: Handshake },
-  { path: '/merch', label: 'Buy Merch', icon: ShoppingBag },
+  { path: 'https://thedopaminestore.in/collections/abhiyantran-nit-sikkim', label: 'Buy Merch', icon: ShoppingBag },
   // { path: '/organising-team', label: 'Organising Team', icon: UsersRound },
   { path: '/announcements', label: 'Announcements', icon: Megaphone },
-
-
-
 ];
 
 export const Navbar = () => {
@@ -61,12 +58,10 @@ export const Navbar = () => {
             {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = location.pathname === link.path;
-              return (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className="relative px-4 py-2 group flex items-center gap-2"
-                >
+              const isExternal = link.path.startsWith('http');
+
+              const linkContent = (
+                <>
                   <motion.span
                     className="flex items-center gap-2"
                     whileHover={{ scale: 1.05 }}
@@ -95,6 +90,26 @@ export const Navbar = () => {
                       className="absolute bottom-0 left-2 right-2 h-0.5 bg-gradient-to-r from-primary to-secondary"
                     />
                   )}
+                </>
+              );
+
+              return isExternal ? (
+                <a
+                  key={link.path}
+                  href={link.path}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative px-4 py-2 group flex items-center gap-2"
+                >
+                  {linkContent}
+                </a>
+              ) : (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className="relative px-4 py-2 group flex items-center gap-2"
+                >
+                  {linkContent}
                 </Link>
               );
             })}
@@ -164,6 +179,22 @@ export const Navbar = () => {
               </motion.div>
               {navLinks.map((link, index) => {
                 const Icon = link.icon;
+                const isExternal = link.path.startsWith('http');
+
+                const linkContent = (
+                  <>
+                    <motion.span
+                      initial={{ scale: 0, rotate: -180 }}
+                      animate={{ scale: 1, rotate: 0 }}
+                      transition={{ delay: index * 0.05 + 0.1, type: 'spring', stiffness: 200 }}
+                      className="flex items-center"
+                    >
+                      <Icon className="w-5 h-5 shrink-0" />
+                    </motion.span>
+                    {link.label}
+                  </>
+                );
+
                 return (
                   <motion.div
                     key={link.path}
@@ -171,24 +202,28 @@ export const Navbar = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
                   >
-                    <Link
-                      to={link.path}
-                      onClick={() => setIsOpen(false)}
-                      className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${location.pathname === link.path
-                        ? 'bg-primary/20 text-primary'
-                        : 'text-foreground/70 hover:bg-muted hover:text-foreground'
-                        }`}
-                    >
-                      <motion.span
-                        initial={{ scale: 0, rotate: -180 }}
-                        animate={{ scale: 1, rotate: 0 }}
-                        transition={{ delay: index * 0.05 + 0.1, type: 'spring', stiffness: 200 }}
-                        className="flex items-center"
+                    {isExternal ? (
+                      <a
+                        href={link.path}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setIsOpen(false)}
+                        className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors text-foreground/70 hover:bg-muted hover:text-foreground`}
                       >
-                        <Icon className="w-5 h-5 shrink-0" />
-                      </motion.span>
-                      {link.label}
-                    </Link>
+                        {linkContent}
+                      </a>
+                    ) : (
+                      <Link
+                        to={link.path}
+                        onClick={() => setIsOpen(false)}
+                        className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${location.pathname === link.path
+                          ? 'bg-primary/20 text-primary'
+                          : 'text-foreground/70 hover:bg-muted hover:text-foreground'
+                          }`}
+                      >
+                        {linkContent}
+                      </Link>
+                    )}
                   </motion.div>
                 );
               })}

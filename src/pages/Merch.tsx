@@ -10,7 +10,7 @@ const merchItems = [
         price: '₹499',
         category: 'T-Shirt',
         color: 'from-cyan-400 to-blue-500',
-        externalUrl: 'https://example.com/merch/tshirt-classic', // Update with actual URL
+        externalUrl: 'https://thedopaminestore.in/collections/abhiyantran-nit-sikkim',
     },
     {
         id: 2,
@@ -19,7 +19,7 @@ const merchItems = [
         price: '₹549',
         category: 'T-Shirt',
         color: 'from-purple-400 to-pink-500',
-        externalUrl: 'https://example.com/merch/tshirt-tech', // Update with actual URL
+        externalUrl: 'https://thedopaminestore.in/collections/abhiyantran-nit-sikkim',
     },
     {
         id: 3,
@@ -28,7 +28,7 @@ const merchItems = [
         price: '₹1,299',
         category: 'Hoodie',
         color: 'from-orange-400 to-red-500',
-        externalUrl: 'https://example.com/merch/hoodie-premium', // Update with actual URL
+        externalUrl: 'https://thedopaminestore.in/collections/abhiyantran-nit-sikkim',
     },
     {
         id: 4,
@@ -37,7 +37,7 @@ const merchItems = [
         price: '₹1,199',
         category: 'Hoodie',
         color: 'from-green-400 to-teal-500',
-        externalUrl: 'https://example.com/merch/hoodie-developer', // Update with actual URL
+        externalUrl: 'https://thedopaminestore.in/collections/abhiyantran-nit-sikkim',
     },
     {
         id: 5,
@@ -46,7 +46,7 @@ const merchItems = [
         price: '₹599',
         category: 'T-Shirt',
         color: 'from-yellow-400 to-orange-500',
-        externalUrl: 'https://example.com/merch/tshirt-limited', // Update with actual URL
+        externalUrl: 'https://thedopaminestore.in/collections/abhiyantran-nit-sikkim',
     },
     {
         id: 6,
@@ -55,7 +55,7 @@ const merchItems = [
         price: '₹1,499',
         category: 'Hoodie',
         color: 'from-indigo-400 to-purple-500',
-        externalUrl: 'https://example.com/merch/hoodie-zip', // Update with actual URL
+        externalUrl: 'https://thedopaminestore.in/collections/abhiyantran-nit-sikkim',
     },
 ];
 
