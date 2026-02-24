@@ -282,7 +282,7 @@ export const events: EventData[] = [
         team: '2-4 members Team Participation',
         venue: 'Announced Later',
         prize: '₹10,000',
-        image: 'https://enventure.com/wp-content/uploads/2019/11/Importance.png',
+        image: '/sky-high-heavyweight.png',
         maxTeamSize: 4,
         rules: [
             'Aircraft Class: Entries must be between a 500g minimum and 5kg maximum total weight.',
