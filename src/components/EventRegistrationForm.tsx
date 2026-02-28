@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -15,6 +15,7 @@ interface TeamMember {
 interface EventRegistrationFormProps {
     eventId: number;
     eventTitle: string;
+    minTeamSize: number;
     maxTeamSize: number;
 }
 
@@ -24,7 +25,10 @@ const API_BASE = import.meta.env.VITE_API_URL || '';
 
 type FormStep = 'form' | 'otp' | 'success';
 
-export const EventRegistrationForm = ({ eventId, eventTitle, maxTeamSize }: EventRegistrationFormProps) => {
+export const EventRegistrationForm = ({ eventId, eventTitle, minTeamSize, maxTeamSize }: EventRegistrationFormProps) => {
+    // Number of additional members required beyond the leader
+    const requiredExtraMembers = Math.max(0, minTeamSize - 1);
+    const maxExtraMembers = maxTeamSize - 1;
     const { toast } = useToast();
 
     const [step, setStep] = useState<FormStep>('form');
@@ -41,7 +45,9 @@ export const EventRegistrationForm = ({ eventId, eventTitle, maxTeamSize }: Even
         year: '',
     });
 
-    const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+    const [teamMembers, setTeamMembers] = useState<TeamMember[]>(
+        () => Array.from({ length: requiredExtraMembers }, () => ({ name: '', email: '', phone: '' }))
+    );
     const [errors, setErrors] = useState<Record<string, string>>({});
 
     const [otpDigits, setOtpDigits] = useState<string[]>(['', '', '', '', '', '']);
@@ -51,13 +57,15 @@ export const EventRegistrationForm = ({ eventId, eventTitle, maxTeamSize }: Even
     const validatePhone = (phone: string) => /^\d{10}$/.test(phone);
 
     const addTeamMember = () => {
-        if (teamMembers.length < maxTeamSize - 1) {
+        if (teamMembers.length < maxExtraMembers) {
             setTeamMembers([...teamMembers, { name: '', email: '', phone: '' }]);
         }
     };
 
     const removeTeamMember = (index: number) => {
-        setTeamMembers(teamMembers.filter((_, i) => i !== index));
+        if (teamMembers.length > requiredExtraMembers) {
+            setTeamMembers(teamMembers.filter((_, i) => i !== index));
+        }
     };
 
     const updateTeamMember = (index: number, field: keyof TeamMember, value: string) => {
@@ -82,6 +90,15 @@ export const EventRegistrationForm = ({ eventId, eventTitle, maxTeamSize }: Even
         }
         if (!formData.collegeName.trim()) newErrors.collegeName = 'College name is required';
         if (!formData.year) newErrors.year = 'Year is required';
+
+        // Validate total team size (leader + members)
+        const totalMembers = 1 + teamMembers.length;
+        if (totalMembers < minTeamSize) {
+            newErrors.teamSize = `This event requires at least ${minTeamSize} members (including leader). Please add ${minTeamSize - totalMembers} more member(s).`;
+        }
+        if (totalMembers > maxTeamSize) {
+            newErrors.teamSize = `This event allows at most ${maxTeamSize} members (including leader). Please remove ${totalMembers - maxTeamSize} member(s).`;
+        }
 
         teamMembers.forEach((member, index) => {
             if (!member.name.trim()) newErrors[`member${index}Name`] = 'Name is required';
@@ -211,7 +228,7 @@ export const EventRegistrationForm = ({ eventId, eventTitle, maxTeamSize }: Even
         setStep('form');
         setRegistrationId('');
         setFormData({ teamName: '', leaderName: '', leaderEmail: '', leaderPhone: '', collegeName: '', year: '' });
-        setTeamMembers([]);
+        setTeamMembers(Array.from({ length: requiredExtraMembers }, () => ({ name: '', email: '', phone: '' })));
         setOtpDigits(['', '', '', '', '', '']);
         setErrors({});
     };
@@ -353,21 +370,37 @@ export const EventRegistrationForm = ({ eventId, eventTitle, maxTeamSize }: Even
 
                 {maxTeamSize > 1 && (
                     <div className="space-y-4">
-                        <div className="flex items-center justify-between">
-                            <h3 className="font-display text-lg font-semibold text-primary">Team Members ({teamMembers.length}/{maxTeamSize - 1})</h3>
-                            {teamMembers.length < maxTeamSize - 1 && (
+                        <div className="flex items-center justify-between flex-wrap gap-2">
+                            <div>
+                                <h3 className="font-display text-lg font-semibold text-primary">Team Members ({teamMembers.length}/{maxExtraMembers})</h3>
+                                <p className="text-xs text-muted-foreground mt-1">
+                                    Team size: {minTeamSize}–{maxTeamSize} members (including leader)
+                                    {requiredExtraMembers > 0 && (
+                                        <span className="text-yellow-400 ml-1">• Min {requiredExtraMembers} member{requiredExtraMembers > 1 ? 's' : ''} required</span>
+                                    )}
+                                </p>
+                            </div>
+                            {teamMembers.length < maxExtraMembers && (
                                 <Button type="button" variant="outline" size="sm" onClick={addTeamMember} className="flex items-center gap-2">
                                     <UserPlus className="w-4 h-4" />Add Member
                                 </Button>
                             )}
                         </div>
+                        {errors.teamSize && (
+                            <p className="text-red-500 text-sm bg-red-500/10 rounded-lg px-4 py-2">{errors.teamSize}</p>
+                        )}
                         {teamMembers.map((member, index) => (
                             <motion.div key={index} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="glass rounded-xl p-4 space-y-4">
                                 <div className="flex items-center justify-between">
-                                    <span className="font-display text-sm font-semibold text-muted-foreground">Member {index + 1}</span>
-                                    <Button type="button" variant="ghost" size="sm" onClick={() => removeTeamMember(index)} className="text-red-500 hover:text-red-600 hover:bg-red-500/10">
-                                        <Trash2 className="w-4 h-4" />
-                                    </Button>
+                                    <span className="font-display text-sm font-semibold text-muted-foreground">
+                                        Member {index + 1}
+                                        {index < requiredExtraMembers && <span className="text-yellow-400 ml-1">(required)</span>}
+                                    </span>
+                                    {teamMembers.length > requiredExtraMembers && (
+                                        <Button type="button" variant="ghost" size="sm" onClick={() => removeTeamMember(index)} className="text-red-500 hover:text-red-600 hover:bg-red-500/10">
+                                            <Trash2 className="w-4 h-4" />
+                                        </Button>
+                                    )}
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                     <div className="space-y-2">
@@ -388,8 +421,8 @@ export const EventRegistrationForm = ({ eventId, eventTitle, maxTeamSize }: Even
                                 </div>
                             </motion.div>
                         ))}
-                        {teamMembers.length === 0 && (
-                            <p className="text-muted-foreground text-sm text-center py-4">Click "Add Member" to add team members (optional for team events)</p>
+                        {teamMembers.length === 0 && minTeamSize <= 1 && (
+                            <p className="text-muted-foreground text-sm text-center py-4">Click "Add Member" to add team members (optional for this event)</p>
                         )}
                     </div>
                 )}

@@ -118,6 +118,7 @@ const EventDetail = () => {
                             <EventRegistrationForm
                                 eventId={event.id}
                                 eventTitle={event.title}
+                                minTeamSize={event.minTeamSize}
                                 maxTeamSize={event.maxTeamSize}
                             />
                         </div>

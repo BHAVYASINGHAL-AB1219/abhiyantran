@@ -8,6 +8,7 @@ export interface EventData {
     venue: string;
     prize: string;
     image: string;
+    minTeamSize: number;
     maxTeamSize: number;
     rules: string[];
 }
@@ -23,6 +24,7 @@ export const events: EventData[] = [
         venue: 'Innovation Hub',
         prize: '₹50,000',
         image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=300&fit=crop',
+        minTeamSize: 5,
         maxTeamSize: 6,
         rules: [
             'Teams must consist of 5-6 members.',
@@ -43,6 +45,7 @@ export const events: EventData[] = [
         venue: 'Robotics Arena',
         prize: '₹30,000',
         image: 'https://png.pngtree.com/thumb_back/fw800/background/20230416/pngtree-robot-battle-war-background-image_2412125.jpg',
+        minTeamSize: 2,
         maxTeamSize: 4,
         rules: [
             'Robot weight must not exceed 8kg.',
@@ -63,6 +66,7 @@ export const events: EventData[] = [
         venue: 'Outdoor Arena',
         prize: '₹20,000',
         image: 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=400&h=300&fit=crop',
+        minTeamSize: 2,
         maxTeamSize: 4,
         rules: [
             'Participants must bring their own drones.',
@@ -83,6 +87,7 @@ export const events: EventData[] = [
         venue: 'Sand Arena',
         prize: '₹30,000',
         image: 'https://media.geeksforgeeks.org/wp-content/uploads/20190930115723/Curiosity-Rover-NASA.jpg',
+        minTeamSize: 2,
         maxTeamSize: 3,
         rules: [
             'Rover must be self-built, no ready-made kits.',
@@ -103,6 +108,7 @@ export const events: EventData[] = [
         venue: 'Electronics Lab',
         prize: '₹5,000',
         image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+        minTeamSize: 1,
         maxTeamSize: 2,
         rules: [
             'Multiple faulty circuits will be provided.',
@@ -123,6 +129,7 @@ export const events: EventData[] = [
         venue: 'Electronics Lab',
         prize: '₹5,000',
         image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop',
+        minTeamSize: 2,
         maxTeamSize: 2,
         rules: [
             'Problems include both analog and digital circuits.',
@@ -143,6 +150,7 @@ export const events: EventData[] = [
         venue: 'Announced Later',
         prize: '₹5,000',
         image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop',
+        minTeamSize: 2,
         maxTeamSize: 3,
         rules: [
             'Multiple black boxes with unknown circuits inside.',
@@ -163,6 +171,7 @@ export const events: EventData[] = [
         venue: 'will be announced later',
         prize: 'Incubation support and mentorship under NIT Sikkim Incubation Centre.',
         image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=300&fit=crop',
+        minTeamSize: 1,
         maxTeamSize: 4,
         rules: [
             'Submit business plan document before event.',
@@ -183,6 +192,7 @@ export const events: EventData[] = [
         venue: 'Announced Later',
         prize: '₹5,000',
         image: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?w=400&h=300&fit=crop',
+        minTeamSize: 1,
         maxTeamSize: 1,
         rules: [
             'Individual participation only.',
@@ -203,6 +213,7 @@ export const events: EventData[] = [
         venue: 'Announce Later',
         prize: '₹20,000',
         image: 'https://hackster.imgix.net/uploads/attachments/1196200/line_follower_robot_using_arduino_l298_motor_driver_and_ir_sensor_rbsPmUjP1z.jpg',
+        minTeamSize: 2,
         maxTeamSize: 4,
         rules: [
             'Robot must be fully autonomous.',
@@ -223,6 +234,7 @@ export const events: EventData[] = [
         venue: 'Announced Later',
         prize: '₹30,000',
         image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&h=300&fit=crop',
+        minTeamSize: 1,
         maxTeamSize: 1,
         rules: [
             'Case study will be provided on the spot.',
@@ -243,6 +255,7 @@ export const events: EventData[] = [
         venue: 'Announced Later',
         prize: '₹10,000',
         image: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop',
+        minTeamSize: 2,
         maxTeamSize: 3,
         rules: [
             'Use only waste materials provided or brought.',
@@ -263,6 +276,7 @@ export const events: EventData[] = [
         venue: 'Announced Later',
         prize: '₹5,000',
         image: 'https://lavocedinewyork.com/wp-content/uploads/2022/02/brooklyn_bridge_manhattan-1140x815.jpg',
+        minTeamSize: 2,
         maxTeamSize: 4,
         rules: [
             'Materials will be provided (popsicle sticks, glue).',
@@ -283,6 +297,7 @@ export const events: EventData[] = [
         venue: 'Announced Later',
         prize: '₹10,000',
         image: '/sky-high-heavyweight.png',
+        minTeamSize: 2,
         maxTeamSize: 4,
         rules: [
             'Aircraft Class: Entries must be between a 500g minimum and 5kg maximum total weight.',
@@ -329,6 +344,7 @@ export const events: EventData[] = [
         venue: 'Announced Later',
         prize: '₹5,000',
         image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=400&h=300&fit=crop',
+        minTeamSize: 2,
         maxTeamSize: 4,
         rules: [
             'Design a sustainable town layout.',
@@ -369,6 +385,7 @@ export const events: EventData[] = [
         venue: 'Announced Later',
         prize: '₹30,000',
         image: '/exoskeleton-emg.png',
+        minTeamSize: 2,
         maxTeamSize: 4,
         rules: [
             'Objective: Develop an EMG-controlled exoskeleton arm that augments human lifting strength.',
