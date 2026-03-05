@@ -21,6 +21,29 @@ interface EventRegistrationFormProps {
 
 const years = ['1st Year', '2nd Year', '3rd Year', '4th Year', '5th Year'];
 
+const colleges = [
+    'National Institute of Technology Sikkim',
+    'National Institute of Technology Silchar',
+    'National Institute of Technology Nagaland',
+    'National Institute of Technology Meghalaya',
+    'National Institute of Technology Mizoram',
+    'National Institute of Technology Manipur',
+    'National Institute of Technology Arunachal Pradesh',
+    'National Institute of Technology Agartala',
+    'Sikkim Institute of science and technology namchi',
+    'Sikkim Manipal institute of technology',
+    'Centre for computers and communication technology Sikkim',
+    'Advanced technical training centre sikkim',
+    'Sikkim University',
+];
+
+const restrictedEventsForNITSikkim = [
+    'Robo War',
+    'Drone Racing Championship',
+    'Sand Rover',
+    'Line Follower'
+];
+
 const API_BASE = import.meta.env.VITE_API_URL || '';
 
 type FormStep = 'form' | 'otp' | 'success';
@@ -30,6 +53,9 @@ export const EventRegistrationForm = ({ eventId, eventTitle, minTeamSize, maxTea
     const requiredExtraMembers = Math.max(0, minTeamSize - 1);
     const maxExtraMembers = maxTeamSize - 1;
     const { toast } = useToast();
+
+    // Determine if the current event is restricted for NIT Sikkim
+    const isRestrictedForNITSikkim = restrictedEventsForNITSikkim.includes(eventTitle);
 
     const [step, setStep] = useState<FormStep>('form');
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -334,7 +360,22 @@ export const EventRegistrationForm = ({ eventId, eventTitle, minTeamSize, maxTea
                     </div>
                     <div className="space-y-2">
                         <Label htmlFor="collegeName">College Name *</Label>
-                        <Input id="collegeName" value={formData.collegeName} onChange={(e) => setFormData({ ...formData, collegeName: e.target.value })} placeholder="Enter college name" className={errors.collegeName ? 'border-red-500' : ''} />
+                        <select
+                            id="collegeName"
+                            value={formData.collegeName}
+                            onChange={(e) => setFormData({ ...formData, collegeName: e.target.value })}
+                            className={`w-full h-10 px-3 rounded-md border bg-background text-foreground ${errors.collegeName ? 'border-red-500' : 'border-input'}`}
+                        >
+                            <option value="">Select College</option>
+                            {colleges.map((college) => {
+                                const isDisabled = isRestrictedForNITSikkim && college === 'National Institute of Technology Sikkim';
+                                return (
+                                    <option key={college} value={college} disabled={isDisabled}>
+                                        {college} {isDisabled ? '(Closed for this event)' : ''}
+                                    </option>
+                                );
+                            })}
+                        </select>
                         {errors.collegeName && <p className="text-red-500 text-xs">{errors.collegeName}</p>}
                     </div>
                 </div>
