@@ -1,6 +1,7 @@
 import { Layout } from '@/components/layout/Layout';
 import { HeroSection } from '@/components/home/HeroSection';
 import { FeaturedEvents } from '@/components/home/FeaturedEvents';
+import { SponsorsShowcase } from '@/components/home/SponsorsShowcase';
 import { HighlightsSection } from '@/components/home/HighlightsSection';
 
 const Index = () => {
@@ -8,6 +9,7 @@ const Index = () => {
     <Layout>
       <HeroSection />
       <FeaturedEvents />
+      <SponsorsShowcase />
       <HighlightsSection />
     </Layout>
   );

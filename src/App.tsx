@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Events from "./pages/Events";
 import Schedule from "./pages/Schedule";
 import ComingSoon from "./pages/ComingSoon";
+import Sponsors from "./pages/Sponsors";
 import Announcements from "./pages/Announcements";
 import OrganisingTeam from "./pages/OrganisingTeam";
 // import Merch from "./pages/Merch"; // Temporarily replaced by ComingSoon
@@ -37,7 +38,7 @@ const App = () => (
             <Route path="/events/:id" element={<EventDetail />} />
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/speakers" element={<ComingSoon title="Speakers" />} />
-            <Route path="/sponsors" element={<ComingSoon title="Sponsors" />} />
+            <Route path="/sponsors" element={<Sponsors />} />
             <Route path="/merch" element={<ComingSoon title="Buy Merch" />} />
             <Route path="/announcements" element={<Announcements />} />
             <Route path="/organising-team" element={<OrganisingTeam />} />
