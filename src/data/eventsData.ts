@@ -90,7 +90,7 @@ export const events: EventData[] = [
         minTeamSize: 2,
         maxTeamSize: 3,
         rules: [
-            'Rover must be self-built, no ready-made kits.',
+            'Participants can buy sand rover kits online or can buy in built truck',
             'Maximum dimensions: 40cm x 40cm x 30cm.',
             'Must complete the course within given time limit.',
             'Remote control must be wireless.',

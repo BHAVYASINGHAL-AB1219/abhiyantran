@@ -64,7 +64,7 @@ export const SponsorsShowcase = () => {
                                 <div className="glass neon-border rounded-2xl p-8 md:p-10 text-center flex flex-col items-center">
                                     {/* Logo */}
                                     <motion.div
-                                        className="w-28 h-28 rounded-2xl overflow-hidden bg-white flex items-center justify-center mb-5"
+                                        className="w-28 h-28 rounded-2xl overflow-hidden bg-gray-900 flex items-center justify-center mb-5"
                                         animate={{ rotate: [0, 2, -2, 0] }}
                                         transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                                     >
@@ -95,8 +95,8 @@ export const SponsorsShowcase = () => {
                             key={s.name}
                             onClick={() => setActiveIndex(i)}
                             className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${i === activeIndex
-                                    ? 'bg-primary scale-125 shadow-[0_0_8px_hsl(180_100%_50%/0.6)]'
-                                    : 'bg-muted-foreground/40 hover:bg-muted-foreground/60'
+                                ? 'bg-primary scale-125 shadow-[0_0_8px_hsl(180_100%_50%/0.6)]'
+                                : 'bg-muted-foreground/40 hover:bg-muted-foreground/60'
                                 }`}
                             aria-label={`Show ${s.name}`}
                         />

@@ -50,7 +50,7 @@ const Sponsors = () => {
               >
                 <div className="glass-hover rounded-2xl p-8 md:p-10 text-center flex flex-col items-center justify-center min-h-[260px]">
                   {/* Logo */}
-                  <div className="w-28 h-28 rounded-2xl overflow-hidden bg-white flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                  <div className="w-28 h-28 rounded-2xl overflow-hidden bg-gray-900 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                     <img
                       src={sponsor.logo}
                       alt={`${sponsor.name} logo`}
