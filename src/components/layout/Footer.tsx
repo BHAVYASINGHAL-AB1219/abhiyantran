@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone, Instagram, Linkedin, Github } from 'lucide-react';
+import { Mail, MapPin, Phone, Instagram, Linkedin } from 'lucide-react';
 
 const footerLinks = {
   quickLinks: [
@@ -20,7 +20,6 @@ const footerLinks = {
 const socialLinks = [
   { icon: Instagram, href: 'https://www.instagram.com/abhiyantran', label: 'Instagram' },
   { icon: Linkedin, href: 'https://www.linkedin.com/in/abhiyantran-nitsikkim/', label: 'LinkedIn' },
-  { icon: Github, href: '#', label: 'GitHub' },
 ];
 
 export const Footer = () => {
@@ -103,7 +102,7 @@ export const Footer = () => {
               </li>
               <li className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Phone className="w-4 h-4 text-primary" />
-                <span>+91 (03595) 260 000</span>
+                <span>Ayush Bhushan, President: 7488252185</span>
               </li>
             </ul>
           </div>
