@@ -108,7 +108,6 @@ export const Footer = () => {
             </ul>
           </div>
         </div>
-
         <div className="mt-12 pt-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
             © 2026 NIT Sikkim - ABHIYANTRAN. All rights reserved.

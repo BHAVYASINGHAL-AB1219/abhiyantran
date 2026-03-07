@@ -9,12 +9,14 @@ const sponsors = [
         role: 'Merchandise Partner',
         logo: '/dopamine-logo.png',
         color: 'from-pink-500 to-rose-500',
+        url: 'https://thedopaminestore.in/',
     },
     {
         name: 'Summit Times',
         role: 'Media Partner',
         logo: '/summit-media-logo.png',
         color: 'from-sky-400 to-blue-600',
+        url: 'https://summittimes.in/home',
     },
 ];
 
@@ -61,28 +63,30 @@ export const SponsorsShowcase = () => {
                                 transition={{ duration: 0.5, ease: 'easeInOut' }}
                                 className="w-full"
                             >
-                                <div className="glass neon-border rounded-2xl p-8 md:p-10 text-center flex flex-col items-center">
-                                    {/* Logo */}
-                                    <motion.div
-                                        className="w-28 h-28 rounded-2xl overflow-hidden bg-gray-900 flex items-center justify-center mb-5"
-                                        animate={{ rotate: [0, 2, -2, 0] }}
-                                        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                                    >
-                                        <img
-                                            src={sponsor.logo}
-                                            alt={`${sponsor.name} logo`}
-                                            className="w-full h-full object-contain p-2"
-                                        />
-                                    </motion.div>
+                                <a href={sponsor.url} target="_blank" rel="noopener noreferrer">
+                                    <div className="glass neon-border rounded-2xl p-8 md:p-10 text-center flex flex-col items-center cursor-pointer">
+                                        {/* Logo */}
+                                        <motion.div
+                                            className="w-28 h-28 rounded-2xl overflow-hidden bg-gray-900 flex items-center justify-center mb-5"
+                                            animate={{ rotate: [0, 2, -2, 0] }}
+                                            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                                        >
+                                            <img
+                                                src={sponsor.logo}
+                                                alt={`${sponsor.name} logo`}
+                                                className="w-full h-full object-contain p-2"
+                                            />
+                                        </motion.div>
 
-                                    {/* Name & Role */}
-                                    <h3 className="font-display text-2xl font-semibold mb-1">
-                                        {sponsor.name}
-                                    </h3>
-                                    <span className="text-sm text-muted-foreground font-medium uppercase tracking-wider">
-                                        {sponsor.role}
-                                    </span>
-                                </div>
+                                        {/* Name & Role */}
+                                        <h3 className="font-display text-2xl font-semibold mb-1">
+                                            {sponsor.name}
+                                        </h3>
+                                        <span className="text-sm text-muted-foreground font-medium uppercase tracking-wider">
+                                            {sponsor.role}
+                                        </span>
+                                    </div>
+                                </a>
                             </motion.div>
                         </AnimatePresence>
                     </div>

@@ -8,12 +8,14 @@ const sponsors = [
     role: 'Merchandise Partner',
     logo: '/dopamine-logo.png',
     color: 'from-pink-500 to-rose-500',
+    url: 'https://thedopaminestore.in/',
   },
   {
     name: 'Summit Times',
     role: 'Media Partner',
     logo: '/summit-media-logo.png',
     color: 'from-sky-400 to-blue-600',
+    url: 'https://summittimes.in/home',
   },
 ];
 
@@ -40,33 +42,39 @@ const Sponsors = () => {
           {/* Sponsors Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
             {sponsors.map((sponsor, index) => (
-              <motion.div
+              <a
                 key={sponsor.name}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.15 }}
-                whileHover={{ y: -8, scale: 1.03 }}
+                href={sponsor.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group"
               >
-                <div className="glass-hover rounded-2xl p-8 md:p-10 text-center flex flex-col items-center justify-center min-h-[260px]">
-                  {/* Logo */}
-                  <div className="w-28 h-28 rounded-2xl overflow-hidden bg-gray-900 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                    <img
-                      src={sponsor.logo}
-                      alt={`${sponsor.name} logo`}
-                      className="w-full h-full object-contain p-2"
-                    />
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.15 }}
+                  whileHover={{ y: -8, scale: 1.03 }}
+                >
+                  <div className="glass-hover rounded-2xl p-8 md:p-10 text-center flex flex-col items-center justify-center min-h-[260px]">
+                    {/* Logo */}
+                    <div className="w-28 h-28 rounded-2xl overflow-hidden bg-gray-900 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                      <img
+                        src={sponsor.logo}
+                        alt={`${sponsor.name} logo`}
+                        className="w-full h-full object-contain p-2"
+                      />
+                    </div>
+                    {/* Name */}
+                    <h3 className="font-display text-xl font-semibold mb-1 group-hover:text-primary transition-colors">
+                      {sponsor.name}
+                    </h3>
+                    {/* Role */}
+                    <span className="text-sm text-muted-foreground font-medium uppercase tracking-wider">
+                      {sponsor.role}
+                    </span>
                   </div>
-                  {/* Name */}
-                  <h3 className="font-display text-xl font-semibold mb-1 group-hover:text-primary transition-colors">
-                    {sponsor.name}
-                  </h3>
-                  {/* Role */}
-                  <span className="text-sm text-muted-foreground font-medium uppercase tracking-wider">
-                    {sponsor.role}
-                  </span>
-                </div>
-              </motion.div>
+                </motion.div>
+              </a>
             ))}
           </div>
 
