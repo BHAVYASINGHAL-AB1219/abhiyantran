@@ -68,6 +68,7 @@ export const EventRegistrationForm = ({ eventId, eventTitle, minTeamSize, maxTea
         leaderEmail: '',
         leaderPhone: '',
         collegeName: '',
+        customCollegeName: '',
         year: '',
     });
 
@@ -114,7 +115,11 @@ export const EventRegistrationForm = ({ eventId, eventTitle, minTeamSize, maxTea
         } else if (!validatePhone(formData.leaderPhone)) {
             newErrors.leaderPhone = 'Phone must be 10 digits';
         }
-        if (!formData.collegeName.trim()) newErrors.collegeName = 'College name is required';
+        if (!formData.collegeName.trim()) {
+            newErrors.collegeName = 'College name is required';
+        } else if (formData.collegeName === 'Other' && !formData.customCollegeName.trim()) {
+            newErrors.customCollegeName = 'Please enter your college name';
+        }
         if (!formData.year) newErrors.year = 'Year is required';
 
         // Validate total team size (leader + members)
@@ -191,7 +196,7 @@ export const EventRegistrationForm = ({ eventId, eventTitle, minTeamSize, maxTea
         const payload = {
             otp, eventId, eventTitle,
             teamName: formData.teamName,
-            collegeName: formData.collegeName,
+            collegeName: formData.collegeName === 'Other' ? formData.customCollegeName : formData.collegeName,
             leaderName: formData.leaderName,
             leaderEmail: formData.leaderEmail,
             leaderPhone: formData.leaderPhone,
@@ -253,7 +258,7 @@ export const EventRegistrationForm = ({ eventId, eventTitle, minTeamSize, maxTea
     const resetAll = () => {
         setStep('form');
         setRegistrationId('');
-        setFormData({ teamName: '', leaderName: '', leaderEmail: '', leaderPhone: '', collegeName: '', year: '' });
+        setFormData({ teamName: '', leaderName: '', leaderEmail: '', leaderPhone: '', collegeName: '', customCollegeName: '', year: '' });
         setTeamMembers(Array.from({ length: requiredExtraMembers }, () => ({ name: '', email: '', phone: '' })));
         setOtpDigits(['', '', '', '', '', '']);
         setErrors({});
@@ -358,25 +363,44 @@ export const EventRegistrationForm = ({ eventId, eventTitle, minTeamSize, maxTea
                         <Input id="teamName" value={formData.teamName} onChange={(e) => setFormData({ ...formData, teamName: e.target.value })} placeholder="Enter team name" className={errors.teamName ? 'border-red-500' : ''} />
                         {errors.teamName && <p className="text-red-500 text-xs">{errors.teamName}</p>}
                     </div>
-                    <div className="space-y-2">
-                        <Label htmlFor="collegeName">College Name *</Label>
-                        <select
-                            id="collegeName"
-                            value={formData.collegeName}
-                            onChange={(e) => setFormData({ ...formData, collegeName: e.target.value })}
-                            className={`w-full h-10 px-3 rounded-md border bg-background text-foreground ${errors.collegeName ? 'border-red-500' : 'border-input'}`}
-                        >
-                            <option value="">Select College</option>
-                            {colleges.map((college) => {
-                                const isDisabled = isRestrictedForNITSikkim && college === 'National Institute of Technology Sikkim';
-                                return (
-                                    <option key={college} value={college} disabled={isDisabled}>
-                                        {college} {isDisabled ? '(Closed for this event)' : ''}
-                                    </option>
-                                );
-                            })}
-                        </select>
-                        {errors.collegeName && <p className="text-red-500 text-xs">{errors.collegeName}</p>}
+                    <div className="space-y-4">
+                        <div className="space-y-2">
+                            <Label htmlFor="collegeName">College Name *</Label>
+                            <select
+                                id="collegeName"
+                                value={formData.collegeName}
+                                onChange={(e) => {
+                                    setFormData({ ...formData, collegeName: e.target.value, customCollegeName: '' });
+                                }}
+                                className={`w-full h-10 px-3 rounded-md border bg-background text-foreground ${errors.collegeName ? 'border-red-500' : 'border-input'}`}
+                            >
+                                <option value="">Select College</option>
+                                {colleges.map((college) => {
+                                    const isDisabled = isRestrictedForNITSikkim && college === 'National Institute of Technology Sikkim';
+                                    return (
+                                        <option key={college} value={college} disabled={isDisabled}>
+                                            {college} {isDisabled ? '(Closed for this event)' : ''}
+                                        </option>
+                                    );
+                                })}
+                                <option value="Other">Other (Please specify)</option>
+                            </select>
+                            {errors.collegeName && <p className="text-red-500 text-xs">{errors.collegeName}</p>}
+                        </div>
+
+                        {formData.collegeName === 'Other' && (
+                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="space-y-2">
+                                <Label htmlFor="customCollegeName">Specify Your College *</Label>
+                                <Input
+                                    id="customCollegeName"
+                                    value={formData.customCollegeName}
+                                    onChange={(e) => setFormData({ ...formData, customCollegeName: e.target.value })}
+                                    placeholder="Enter your college name"
+                                    className={errors.customCollegeName ? 'border-red-500' : ''}
+                                />
+                                {errors.customCollegeName && <p className="text-red-500 text-xs">{errors.customCollegeName}</p>}
+                            </motion.div>
+                        )}
                     </div>
                 </div>
 
