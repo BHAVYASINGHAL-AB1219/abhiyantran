@@ -11,6 +11,7 @@ export interface EventData {
     minTeamSize: number;
     maxTeamSize: number;
     rules: string[];
+    themes?: string[];
 }
 
 export const events: EventData[] = [
@@ -33,6 +34,19 @@ export const events: EventData[] = [
             'Teams must present their project to the judges at the end.',
             'Judging criteria: Innovation, Technical Complexity, Impact, and Presentation.',
             'Decision of judges will be final and binding.',
+        ],
+        themes: [
+            'MedTech/BioTech/ HealthTech',
+            'Agriculture, FoodTech & Rural Development',
+            'Robotics and Drones',
+            'Clean & Green Technology',
+            'Tourism',
+            'Disaster Management',
+            'Smart Education',
+            'Renewable/ Sustainable Energy',
+            'Fitness & Sports',
+            'Smart Automation',
+            'Transportation & Logistics'
         ],
     },
     {

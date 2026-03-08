@@ -86,6 +86,33 @@ const EventDetail = () => {
                                 </p>
                             </motion.div>
 
+                            {/* Themes Section */}
+                            {event.themes && event.themes.length > 0 && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.1 }}
+                                    className="glass rounded-2xl p-6"
+                                >
+                                    <h2 className="font-display text-xl font-bold mb-6">
+                                        Problem Statement <span className="text-gradient">Themes</span>
+                                    </h2>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        {event.themes.map((theme, index) => (
+                                            <div
+                                                key={index}
+                                                className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 border border-border/50"
+                                            >
+                                                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-xs font-bold text-primary">
+                                                    {String(index + 1).padStart(2, '0')}
+                                                </span>
+                                                <span className="text-sm font-medium">{theme}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </motion.div>
+                            )}
+
                             {/* Rules Section */}
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
