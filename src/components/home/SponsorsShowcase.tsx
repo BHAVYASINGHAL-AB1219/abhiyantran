@@ -18,6 +18,13 @@ const sponsors = [
         color: 'from-sky-400 to-blue-600',
         url: 'https://summittimes.in/home',
     },
+    {
+        name: 'Ravangla Star',
+        role: 'Hospitality Partner',
+        logo: '/RavanglaStar.png',
+        color: 'from-sky-400 to-blue-600',
+        url: '#',
+    },
 ];
 
 export const SponsorsShowcase = () => {

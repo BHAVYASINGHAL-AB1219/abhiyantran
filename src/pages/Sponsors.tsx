@@ -17,6 +17,13 @@ const sponsors = [
     color: 'from-sky-400 to-blue-600',
     url: 'https://summittimes.in/home',
   },
+  {
+      name: 'Ravangla Star',
+      role: 'Hospitality Partner',
+      logo: '/RavanglaStar.png',
+      color: 'from-sky-400 to-blue-600',
+      url: '#',
+  }
 ];
 
 const Sponsors = () => {
@@ -40,7 +47,7 @@ const Sponsors = () => {
           </motion.div>
 
           {/* Sponsors Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {sponsors.map((sponsor, index) => (
               <a
                 key={sponsor.name}
