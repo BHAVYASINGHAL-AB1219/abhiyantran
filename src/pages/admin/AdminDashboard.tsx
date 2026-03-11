@@ -28,7 +28,7 @@ const AdminDashboard = () => {
                         <div className="glass rounded-xl p-4 sticky top-24">
                             <div className="mb-8 px-2">
                                 <h1 className="text-xl font-display font-bold text-gradient">Admin Panel</h1>
-                                <p className="text-xs text-muted-foreground mt-1">ABHIYANTRAN 2025</p>
+                                <p className="text-xs text-muted-foreground mt-1">ABHIYANTRAN 2026</p>
                             </div>
 
                             <nav className="space-y-2">
