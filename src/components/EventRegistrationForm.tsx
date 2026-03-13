@@ -41,7 +41,9 @@ const restrictedEventsForNITSikkim = [
     'Robo War',
     'Drone Racing Championship',
     'Sand Rover',
-    'Line Follower'
+    'Line Follower',
+    'Exoskeleton Electromyography Arm',
+    'Sky-High Heavyweigh'
 ];
 
 const API_BASE = import.meta.env.VITE_API_URL || '';
