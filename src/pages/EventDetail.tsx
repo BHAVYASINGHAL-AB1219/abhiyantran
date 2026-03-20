@@ -142,12 +142,23 @@ const EventDetail = () => {
                             </motion.div>
 
                             {/* Registration Form */}
-                            <EventRegistrationForm
-                                eventId={event.id}
-                                eventTitle={event.title}
-                                minTeamSize={event.minTeamSize}
-                                maxTeamSize={event.maxTeamSize}
-                            />
+                            {event.category === 'Non-Technical' ? (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="glass rounded-2xl p-8 text-center border border-red-500/30 bg-red-500/5 mt-8"
+                                >
+                                    <h2 className="font-display text-2xl font-bold text-red-400 mb-2">Registration Closed</h2>
+                                    <p className="text-muted-foreground">We are no longer accepting new registrations for this event. Thank you for your interest!</p>
+                                </motion.div>
+                            ) : (
+                                <EventRegistrationForm
+                                    eventId={event.id}
+                                    eventTitle={event.title}
+                                    minTeamSize={event.minTeamSize}
+                                    maxTeamSize={event.maxTeamSize}
+                                />
+                            )}
                         </div>
 
                         {/* Sidebar - Event Info */}
