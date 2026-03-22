@@ -111,8 +111,8 @@ const Events = () => {
                       </div>
 
                       <Link to={`/events/${event.id}`}>
-                        <Button size="sm" className={`w-full font-display group/btn ${event.category === 'Non-Technical' ? 'opacity-80' : ''}`}>
-                          {event.category === 'Non-Technical' ? 'Registration Closed' : 'Register'}
+                        <Button size="sm" className="w-full font-display group/btn opacity-80">
+                          Registration Closed
                           <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
                         </Button>
                       </Link>
