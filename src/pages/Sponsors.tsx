@@ -41,7 +41,7 @@ const sponsors = [
   {
     name: 'Soft Computing Research Society',
     role: '',
-    logo: '/scrs-logo.png',
+    logo: '/soft-computing-research-society.jpeg',
     color: 'from-blue-400 to-cyan-600',
     url: 'https://scrs.in/',
   }
