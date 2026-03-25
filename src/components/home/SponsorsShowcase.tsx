@@ -5,6 +5,13 @@ import { Link } from 'react-router-dom';
 
 const sponsors = [
     {
+        name: 'DGRE-DRDO',
+        role: 'Silver Sponsor',
+        logo: '/DGRE-DRDO.jpeg',
+        color: 'from-slate-300 to-slate-500',
+        url: '#',
+    },
+    {
         name: 'Dopamine',
         role: 'Merchandise Partner',
         logo: '/dopamine-logo.png',

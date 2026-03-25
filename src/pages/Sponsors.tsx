@@ -4,6 +4,13 @@ import { Handshake } from 'lucide-react';
 
 const sponsors = [
   {
+    name: 'DGRE-DRDO',
+    role: 'Silver Sponsor',
+    logo: '/DGRE-DRDO.jpeg',
+    color: 'from-slate-300 to-slate-500',
+    url: '#',
+  },
+  {
     name: 'Dopamine',
     role: 'Merchandise Partner',
     logo: '/dopamine-logo.png',
@@ -75,13 +82,14 @@ const Sponsors = () => {
                 href={sponsor.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group"
+                className={`group ${sponsor.role === 'Silver Sponsor' ? 'md:col-span-3 flex justify-center' : ''}`}
               >
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.15 }}
                   whileHover={{ y: -8, scale: 1.03 }}
+                  className={sponsor.role === 'Silver Sponsor' ? 'w-full max-w-md' : 'w-full'}
                 >
                   <div className="glass-hover rounded-2xl p-8 md:p-10 text-center flex flex-col items-center justify-center min-h-[260px]">
                     {/* Logo */}
