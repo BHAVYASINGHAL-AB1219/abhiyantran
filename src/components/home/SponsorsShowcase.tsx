@@ -27,7 +27,7 @@ const sponsors = [
     },
     {
         name: 'West Point',
-        role: 'Sponsor',
+        role: 'Advetisement and Venue Partner',
         logo: '/westpoint-logo.jpg',
         color: 'from-yellow-400 to-amber-500',
         url: 'https://www.google.com/search?vsrid=CIua7Y7Q-6CDLxACGAEiJGZjY2ViZWU4LWEzODMtNDVlNi1hNzU4LWU0MGU2ZWMzNWI4ODJ6IgJzbChaQnIKLmxmZS1kdW1teTpmZmQ3MGI0ZC04NWIxLTRlNzQtYmNlMi03MTg0ZTc3MmZhYTUSQAo-L2Jucy9zbC9ib3JnL3NsL2Jucy9sZW5zLWZyb250ZW5kLWFwaS9wcm9kLmxlbnMtZnJvbnRlbmQtYXBpLzk4so6_i_6ukwM&vsint=CAIqDAoCCAcSAggKGAEgATojChYNAAAAPxUAAAA_HQAAgD8lAACAPzABEIAIGLcCJQAAgD8&udm=26&lns_mode=un&source=lns.web.wil&vsdim=1024,311&gsessionid=S33XxSTqqiDB6Ryg4NQknCjSHTvgBu-O40yUSmX5tGbDzW6LMzEvzw&lsessionid=u4dU1S1fLCL0FHM9aFSMzb-vVq4JVhsitejQ-ErWvQs9BTpn8mmWKQ&lns_surface=26&lns_vfs=e&sei=hoG9aYyHNKmT4-EP9LmvmQg',
@@ -38,6 +38,13 @@ const sponsors = [
         logo: '/bis-logo.png',
         color: 'from-blue-500 to-indigo-600',
         url: 'https://www.bis.gov.in/?lang=hi',
+    },
+    {
+        name: 'Soft Computing Research Society',
+        role: 'Sponsor',
+        logo: '/scrs-logo.png',
+        color: 'from-blue-400 to-cyan-600',
+        url: 'https://scrs.in/',
     },
 ];
 

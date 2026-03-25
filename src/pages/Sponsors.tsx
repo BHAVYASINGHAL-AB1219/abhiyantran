@@ -33,10 +33,17 @@ const sponsors = [
   },
   {
     name: 'Bureau of Indian Standards',
-    role: 'Advertisement and Venue Partner',
+    role: '',
     logo: '/bis-logo.png',
     color: 'from-blue-500 to-indigo-600',
     url: 'https://www.bis.gov.in/?lang=hi',
+  },
+  {
+    name: 'Soft Computing Research Society',
+    role: '',
+    logo: '/scrs-logo.png',
+    color: 'from-blue-400 to-cyan-600',
+    url: 'https://scrs.in/',
   }
 ];
 
