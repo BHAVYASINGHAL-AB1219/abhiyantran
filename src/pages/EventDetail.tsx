@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Layout } from '@/components/layout/Layout';
 import { getEventById } from '@/data/eventsData';
 import { Clock, Users, MapPin, Tag, ArrowLeft, CheckCircle } from 'lucide-react';
+import { EventRegistrationForm } from '@/components/EventRegistrationForm';
 import { Button } from '@/components/ui/button';
 
 const EventDetail = () => {
@@ -141,14 +142,14 @@ const EventDetail = () => {
                             </motion.div>
 
                             {/* Registration Form */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className="glass rounded-2xl p-8 text-center border border-red-500/30 bg-red-500/5 mt-8"
-                            >
-                                <h2 className="font-display text-2xl font-bold text-red-400 mb-2">Registration Closed</h2>
-                                <p className="text-muted-foreground">We are no longer accepting new registrations for this event. Thank you for your interest!</p>
-                            </motion.div>
+                            <div className="mt-8">
+                                <EventRegistrationForm
+                                    eventId={event.id}
+                                    eventTitle={event.title}
+                                    minTeamSize={event.minTeamSize || 1}
+                                    maxTeamSize={event.maxTeamSize || 1}
+                                />
+                            </div>
                         </div>
 
                         {/* Sidebar - Event Info */}

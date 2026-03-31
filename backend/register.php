@@ -68,6 +68,15 @@ if ($eventId === null || $eventTitle === '' || $teamName === '' || $collegeName 
     exit;
 }
 
+$lowerCollege = strtolower($collegeName);
+if (strpos($lowerCollege, 'nit sikkim') !== false || 
+   (strpos($lowerCollege, 'national institute of technology') !== false && strpos($lowerCollege, 'sikkim') !== false) ||
+   $lowerCollege === 'nitsikkim') {
+    http_response_code(403);
+    echo json_encode(['success' => false, 'error' => 'Registrations are currently closed for NIT Sikkim students.']);
+    exit;
+}
+
 $members = [];
 foreach ($teamMembers as $m) {
     if (!is_array($m)) continue;

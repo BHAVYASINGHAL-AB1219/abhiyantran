@@ -37,15 +37,7 @@ const colleges = [
     'Sikkim University',
 ];
 
-const restrictedEventsForNITSikkim = [
-    'Robo War',
-    'Drone Racing Championship',
-    'Sand Rover',
-    'Line Follower',
-    'Exoskeleton Electromyography Arm',
-    'Sky-High Heavyweigh'
-];
-
+// All events are now restricted for NIT Sikkim
 const API_BASE = import.meta.env.VITE_API_URL || '';
 
 type FormStep = 'form' | 'otp' | 'success';
@@ -57,7 +49,8 @@ export const EventRegistrationForm = ({ eventId, eventTitle, minTeamSize, maxTea
     const { toast } = useToast();
 
     // Determine if the current event is restricted for NIT Sikkim
-    const isRestrictedForNITSikkim = restrictedEventsForNITSikkim.includes(eventTitle);
+    // Registration is closed for NIT Sikkim for all events
+    const isRestrictedForNITSikkim = true;
 
     const [step, setStep] = useState<FormStep>('form');
     const [isSubmitting, setIsSubmitting] = useState(false);
