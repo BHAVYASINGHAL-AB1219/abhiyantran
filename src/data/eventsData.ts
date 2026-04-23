@@ -99,7 +99,7 @@ export const events: EventData[] = [
         duration: 'Will Be Update soon',
         team: '2-3 members',
         venue: 'Sand Arena',
-        prize: '₹30,000',
+        prize: '₹20,000',
         image: 'https://media.geeksforgeeks.org/wp-content/uploads/20190930115723/Curiosity-Rover-NASA.jpg',
         minTeamSize: 2,
         maxTeamSize: 3,
