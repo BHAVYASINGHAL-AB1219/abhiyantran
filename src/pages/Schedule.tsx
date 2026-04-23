@@ -12,25 +12,34 @@ const days = [
 
 const scheduleData = {
   day1: [
-    { time: "09:00 AM", title: "Opening Ceremony", venue: "Main Auditorium", speaker: "Dr. Rajesh Kumar", type: "ceremony" },
-    { time: "10:00 AM", title: "Keynote: Future of AI", venue: "Seminar Hall 1", speaker: "Prof. Sarah Chen", type: "keynote" },
-    { time: "11:30 AM", title: "Hackathon Begins", venue: "Innovation Hub", speaker: "", type: "event" },
-    { time: "12:30 PM", title: "Lunch Break", venue: "Food Court", speaker: "", type: "break" },
-    { time: "02:00 PM", title: "Web Dev Workshop", venue: "Lab Complex A", speaker: "John Doe", type: "workshop" },
+    { time: "10:00 AM - 1:00 PM", title: "B-Plan", venue: "Shed-2 ECE dept", speaker: "", type: "event" },
+    { time: "10:00 AM onwards", title: "Hackathon", venue: "CSE Dept", speaker: "", type: "event" },
+    { time: "10:30 AM - 12:00 PM", title: "Inauguration", venue: "MPH", speaker: "", type: "ceremony" },
+    { time: "1:00 PM - 4:00 PM", title: "Maths Olympiad", venue: "CLS", speaker: "", type: "event" },
+    { time: "2:00 PM - 4:00 PM", title: "Sky High Heavyweight", venue: "Football ground", speaker: "", type: "event" },
+    { time: "2:00 PM - 4:00 PM", title: "Black Box", venue: "TBA", speaker: "", type: "event" },
+    { time: "2:00 PM - 5:00 PM", title: "Workshop", venue: "MPH", speaker: "", type: "workshop" },
+    { time: "4:00 PM", title: "Talkshow 1", venue: "MPH", speaker: "", type: "keynote" },
+    { time: "4:00 PM - 6:00 PM", title: "Sand rover", venue: "Volleyball ground", speaker: "", type: "event" },
+    { time: "4:00 PM - 6:00 PM", title: "Circuit Debugging", venue: "CLS", speaker: "", type: "event" },
+    { time: "4:00 PM - 7:00 PM", title: "Line Follower", venue: "Basketball ground", speaker: "", type: "event" },
+    { time: "5:00 PM - 7:00 PM", title: "Analysis Arena", venue: "CLS", speaker: "", type: "event" },
   ],
   day2: [
-    { time: "09:00 AM", title: "Startup Pitch Session", venue: "Main Auditorium", speaker: "Investor Panel", type: "event" },
-    { time: "12:30 PM", title: "Lunch Break", venue: "Food Court", speaker: "", type: "break" },
-    { time: "06:00 PM", title: "Tech Talk: Web3", venue: "Seminar Hall 2", speaker: "Alex Johnson", type: "keynote" },
-    { time: "08:00 PM", title: "DJ Night", venue: "Open Grounds", speaker: "DJ Nova", type: "entertainment" },
+    { time: "9:00 AM - 1:00 PM", title: "Robo war", venue: "Basketball ground", speaker: "", type: "event" },
+    { time: "10:00 AM - 1:00 PM", title: "Laws of motion", venue: "TBA", speaker: "", type: "event" },
+    { time: "11:30 AM - 1:30 PM", title: "Best of Waste", venue: "TBA", speaker: "", type: "event" },
+    { time: "1:00 PM - 4:00 PM", title: "Bridge It", venue: "CLS", speaker: "", type: "event" },
+    { time: "2:00 PM - 5:00 PM", title: "Town Planning", venue: "CLS", speaker: "", type: "event" },
+    { time: "2:00 PM - 5:00 PM", title: "Drone racing", venue: "Football ground", speaker: "", type: "event" },
+    { time: "3:00 PM - 4:30 PM", title: "Talkshow 2 and 3", venue: "MPH", speaker: "", type: "keynote" },
+    { time: "3:00 PM - 5:00 PM", title: "Exoskeleton EMG Arm Demo", venue: "CLS", speaker: "", type: "event" },
+    { time: "4:00 PM - 5:00 PM", title: "Circuit Forge", venue: "TBA", speaker: "", type: "event" },
   ],
   day3: [
-    { time: "09:00 AM", title: "Hackathon Judging", venue: "Innovation Hub", speaker: "Judge Panel", type: "event" },
-    { time: "11:00 AM", title: "Project Expo", venue: "Exhibition Hall", speaker: "", type: "event" },
-    { time: "12:30 PM", title: "Lunch Break", venue: "Food Court", speaker: "", type: "break" },
-    { time: "02:00 PM", title: "Panel Discussion", venue: "Main Auditorium", speaker: "Industry Leaders", type: "keynote" },
-    { time: "04:00 PM", title: "Award Ceremony", venue: "Main Auditorium", speaker: "Chief Guest", type: "ceremony" },
-    { time: "06:00 PM", title: "Closing Ceremony", venue: "Main Auditorium", speaker: "Vice Chancellor", type: "ceremony" },
+    { time: "9:00 AM - 1:00 PM", title: "Tech Treasure hunt", venue: "Basketball/Football ground", speaker: "", type: "event" },
+    { time: "10:00 AM", title: "Inter school innovation expo", venue: "Football ground/MPH", speaker: "", type: "event" },
+    { time: "2:00 PM", title: "Prize distribution", venue: "MPH", speaker: "", type: "ceremony" },
   ],
 };
 
@@ -134,10 +143,4 @@ const Schedule = () => {
   );
 };
 
-// Original Schedule component is preserved above for future use.
-
-const ScheduleWrapper = () => {
-  return <ComingSoon title="Schedule" />;
-};
-
-export default ScheduleWrapper;
+export default Schedule;
